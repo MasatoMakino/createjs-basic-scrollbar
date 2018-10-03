@@ -83,5 +83,6 @@ export declare class ScrollBarView extends SliderView {
 export declare class ScrollBarViewInitOption {
   targetContents: DisplayObject;
   contentsMask: DisplayObject;
+  static check(option: ScrollBarViewInitOption): void;
 }
 //# sourceMappingURL=ScrollBarView.d.ts.map

@@ -28,16 +28,11 @@ export class ScrollBarView extends SliderView {
       const evt = e;
       this.updateContentsPositionWithRate(evt.rate);
     };
-    if (scrollOption.contentsMask.parent != scrollOption.contentsMask.parent) {
-      console.warn(
-        "ScrollBarView : スクロールするコンテンツと、そのマスクは同一の親を持っている必要があります。",
-        scrollOption.targetContents,
-        scrollOption.contentsMask
-      );
-    }
+    ScrollBarViewInitOption.check(scrollOption);
     this.setTargetContents(scrollOption.targetContents);
     this.setContentsMask(scrollOption.contentsMask);
     if (this._rate != null) {
+      this.changeRate(this._rate);
       this.updateContentsPositionWithRate(this._rate);
     }
   }
@@ -129,6 +124,9 @@ export class ScrollBarView extends SliderView {
     this.changeRate((posDif / sizeDif) * SliderView.MAX_RATE);
   }
   updateSlideButtonSize() {
+    if (!this._targetContents || !this._contentsMask || !this._slideButton) {
+      return;
+    }
     let fullSize = this._maxPosition - this._minPosition;
     let contentsSize = this.getSize(this._targetContents);
     let maskSize = this.getSize(this._contentsMask);
@@ -205,4 +203,14 @@ export class ScrollBarView extends SliderView {
  * スクロールバーの初期化時に必須となる項目をまとめたオブジェクト
  * スクロール対象とスクロールエリアのマスクを指定する。
  */
-export class ScrollBarViewInitOption {}
+export class ScrollBarViewInitOption {
+  static check(option) {
+    if (option.contentsMask.parent != option.contentsMask.parent) {
+      console.warn(
+        "ScrollBarView : スクロールするコンテンツと、そのマスクは同一の親を持っている必要があります。",
+        option.targetContents,
+        option.contentsMask
+      );
+    }
+  }
+}
