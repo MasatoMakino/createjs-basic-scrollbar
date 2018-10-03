@@ -36,7 +36,6 @@ export class ScrollBarView extends SliderView {
 
     if (this._rate != null) {
       this.changeRate(this._rate);
-      this.updateContentsPositionWithRate(this._rate);
     }
   }
 
@@ -122,14 +121,16 @@ export class ScrollBarView extends SliderView {
    * コンテンツサイズが変更された場合の更新にも利用する。
    */
   public initSliderButtonSize(): void {
-    if (this._slideButton && this._targetContents && this._contentsMask) {
-      this.updateSlideButtonSize();
-      this.initSliderPosition();
-      this.addEventListener(
-        SliderEventType.CHANGE,
-        this.updateContentsPosition
-      );
+    if (!this._slideButton || !this._targetContents || !this._contentsMask) {
+      return;
     }
+
+    this.updateSlideButtonSize();
+    this.initSliderPosition();
+
+    if (this.hasEventListener(SliderEventType.CHANGE)) return;
+
+    this.addEventListener(SliderEventType.CHANGE, this.updateContentsPosition);
   }
 
   protected initSliderPosition(): void {
