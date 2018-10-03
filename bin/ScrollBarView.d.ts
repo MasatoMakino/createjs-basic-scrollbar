@@ -18,71 +18,68 @@ import { SliderView, SliderViewInitOption } from "./SliderView";
  * @since 2017/05/31 16:09
  */
 export declare class ScrollBarView extends SliderView {
-  protected _targetContents: DisplayObject;
-  protected _contentsMask: DisplayObject;
-  autoHide: Boolean;
-  constructor(
-    option: SliderViewInitOption,
-    scrollOption: ScrollBarViewInitOption
-  );
-  /**
-   * 初期化処理
-   * @param {SliderViewInitOption} option
-   */
-  protected init(option: SliderViewInitOption): void;
-  /**
-   * スライダーボタンの位置を制限する関数
-   * @return 制限で切り落とされたスライダーボタンの座標値
-   */
-  protected limitSliderButtonPosition(evt: createjs.MouseEvent): number;
-  /**
-   * スライダーの割合から、スライダーの位置を取得する
-   * @param	rate
-   * @return
-   */
-  protected changeRateToPixcel(rate: number): number;
-  /**
-   * スライダーの座標から、スライダーの割合を取得する
-   * @param	pixel
-   * @return
-   */
-  protected changePixexToRate(pixel: number): number;
-  readonly slideButtonSize: number;
-  /**
-   * スクロールバーのボタンサイズ及び位置を更新する。
-   * コンテンツサイズが変更された場合の更新にも利用する。
-   */
-  initSliderButtonSize(): void;
-  protected initSliderPosition(): void;
-  protected updateSlideButtonSize(): void;
-  /**
-   * autoHideの条件に一致するかを判定する
-   */
-  protected readonly isHide: boolean;
-  /**
-   * スライダーイベントに応じてコンテンツをスクロールする
-   * @param {Object} e
-   */
-  updateContentsPosition: (e: Object) => void;
-  /**
-   * rate値を元にコンテンツをスクロールする。
-   * @param {number} rate
-   */
-  protected updateContentsPositionWithRate(rate: number): void;
-  protected onPressBaseFunction(evt: createjs.MouseEvent): void;
-  readonly targetContents: DisplayObject;
-  protected setTargetContents(value: DisplayObject): void;
-  readonly contentsMask: DisplayObject;
-  protected setContentsMask(value: DisplayObject): void;
-  protected onDisposeFunction(e?: Event): void;
+    protected _targetContents: DisplayObject;
+    protected _contentsMask: DisplayObject;
+    autoHide: Boolean;
+    constructor(option: SliderViewInitOption, scrollOption: ScrollBarViewInitOption);
+    /**
+     * 初期化処理
+     * @param {SliderViewInitOption} option
+     */
+    protected init(option: SliderViewInitOption): void;
+    /**
+     * スライダーボタンの位置を制限する関数
+     * @return 制限で切り落とされたスライダーボタンの座標値
+     */
+    protected limitSliderButtonPosition(evt: createjs.MouseEvent): number;
+    /**
+     * スライダーの割合から、スライダーの位置を取得する
+     * @param	rate
+     * @return
+     */
+    protected changeRateToPixcel(rate: number): number;
+    /**
+     * スライダーの座標から、スライダーの割合を取得する
+     * @param	pixel
+     * @return
+     */
+    protected changePixexToRate(pixel: number): number;
+    readonly slideButtonSize: number;
+    /**
+     * スクロールバーのボタンサイズ及び位置を更新する。
+     * コンテンツサイズが変更された場合の更新にも利用する。
+     */
+    initSliderButtonSize(): void;
+    protected initSliderPosition(): void;
+    protected updateSlideButtonSize(): void;
+    /**
+     * autoHideの条件に一致するかを判定する
+     */
+    protected readonly isHide: boolean;
+    /**
+     * スライダーイベントに応じてコンテンツをスクロールする
+     * @param {Object} e
+     */
+    updateContentsPosition: (e: Object) => void;
+    /**
+     * rate値を元にコンテンツをスクロールする。
+     * @param {number} rate
+     */
+    protected updateContentsPositionWithRate(rate: number): void;
+    protected onPressBaseFunction(evt: createjs.MouseEvent): void;
+    readonly targetContents: DisplayObject;
+    protected setTargetContents(value: DisplayObject): void;
+    readonly contentsMask: DisplayObject;
+    protected setContentsMask(value: DisplayObject): void;
+    protected onDisposeFunction(e?: Event): void;
 }
 /**
  * スクロールバーの初期化時に必須となる項目をまとめたオブジェクト
  * スクロール対象とスクロールエリアのマスクを指定する。
  */
 export declare class ScrollBarViewInitOption {
-  targetContents: DisplayObject;
-  contentsMask: DisplayObject;
-  static check(option: ScrollBarViewInitOption): void;
+    targetContents: DisplayObject;
+    contentsMask: DisplayObject;
+    static check(option: ScrollBarViewInitOption): void;
 }
 //# sourceMappingURL=ScrollBarView.d.ts.map
