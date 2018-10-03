@@ -37,7 +37,7 @@ export class ScrollBarView extends SliderView {
     }
     this.setTargetContents(scrollOption.targetContents);
     this.setContentsMask(scrollOption.contentsMask);
-    if (this._rate) {
+    if (this._rate != null) {
       this.updateContentsPositionWithRate(this._rate);
     }
   }

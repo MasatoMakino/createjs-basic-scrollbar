@@ -77,7 +77,7 @@ export class SliderView extends Container {
 
     this.swapBaseChildren();
 
-    if (this._rate) {
+    if (this._rate != null) {
       this.changeRate(this._rate);
     }
   }
