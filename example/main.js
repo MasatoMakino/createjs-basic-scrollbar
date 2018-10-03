@@ -1,4 +1,6 @@
-import { CreatejsCacheUtil } from "./createjs-text-cache.js";
+export { SliderEvent, SliderEventType } from "./SliderEvent.js";
+export { SliderView, SliderViewInitOption } from "./SliderView.js";
+export { ScrollBarView, ScrollBarViewInitOption } from "./ScrollBarView.js";
 
 const onDomContentsLoaded = () => {
   //FPSメーターの生成と配置
@@ -9,31 +11,12 @@ const onDomContentsLoaded = () => {
 
   document.body.appendChild(stats.domElement);
 
-  // 生成する文字列の長さ
-  const l = 3;
-  // 生成する文字列に含める文字セット
-  const c = "abcdefghijklmnopqrstuvwxyz0123456789";
-  const cl = c.length;
-  let r = "";
-  for (let i = 0; i < l; i++) {
-    r += c[Math.floor(Math.random() * cl)];
-  }
-
   //ステージ更新処理
   const updateStage = () => {
-    if (texts) {
-      for (let text of texts) {
-        CreatejsCacheUtil.cacheText(text, r);
-      }
-    }
     stats.begin();
     stage.update();
     stats.end();
   };
-
-  //Create.jsのグローバル設定
-  createjs.Ticker.timingMode = createjs.Ticker.RAF;
-  createjs.Text.prototype.snapToPixel = false;
 
   //stageの初期化
   const canvas = document.getElementById("textCanvas");
@@ -42,18 +25,53 @@ const onDomContentsLoaded = () => {
   const stage = new createjs.Stage(canvas);
   createjs.Ticker.on("tick", updateStage);
 
-  //Textオブジェクトの配置
-  const texts = [];
-  for (let i = 0; i < 100; i++) {
-    for (let j = 0; j < 80; j++) {
-      const text = new createjs.Text("", "16px Meiryo", "#000");
-      text.x = i * 36;
-      text.y = j * 20;
-      CreatejsCacheUtil.cacheText(text, "TXT");
-      stage.addChild(text);
-      texts.push(text);
-    }
-  }
+  //スライダーの実装サンプル
+
+  const sliderContainer = new createjs.Container();
+  stage.addChild(sliderContainer);
+  sliderContainer.x = 200;
+  sliderContainer.y = 200;
+
+  const SLIDER_W = 200;
+  const SLIDER_H = 64;
+  const getSliderBase = color => {
+    const shape = new createjs.Shape();
+    const g = shape.graphics;
+    g.beginFill(color);
+    g.moveTo(0, 0)
+      .lineTo(SLIDER_W, 0)
+      .lineTo(SLIDER_W, SLIDER_H)
+      .lineTo(0, 0)
+      .endFill();
+    sliderContainer.addChild(shape);
+    return shape;
+  };
+
+  const getButton = color => {
+    const shape = new createjs.Shape();
+    const g = shape.graphics;
+    g.beginFill(color);
+    g.drawRect(-8, 0, 16, SLIDER_H);
+
+    sliderContainer.addChild(shape);
+    return shape;
+  };
+
+  const sliderBase = getSliderBase("#00f");
+  const sliderBar = getSliderBase("#0ff");
+  const sliderButton = getButton("#ff0");
+
+  const slider = new SliderView({
+    base: sliderBase,
+    bar: sliderBar,
+    button: sliderButton,
+    minPosition: 0,
+    maxPosition: SLIDER_W
+  });
+
+  slider.addEventListener(SliderEventType.CHANGE, e => {
+    console.log(e.rate);
+  });
 };
 
 /**
