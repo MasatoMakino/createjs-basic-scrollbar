@@ -59,7 +59,16 @@ export declare class ScrollBarView extends SliderView {
    * autoHideの条件に一致するかを判定する
    */
   protected readonly isHide: boolean;
+  /**
+   * スライダーイベントに応じてコンテンツをスクロールする
+   * @param {Object} e
+   */
   updateContentsPosition: (e: Object) => void;
+  /**
+   * rate値を元にコンテンツをスクロールする。
+   * @param {number} rate
+   */
+  protected updateContentsPositionWithRate(rate: number): void;
   protected onPressBaseFunction(evt: createjs.MouseEvent): void;
   readonly targetContents: DisplayObject;
   protected setTargetContents(value: DisplayObject): void;

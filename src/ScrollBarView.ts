@@ -39,6 +39,10 @@ export class ScrollBarView extends SliderView {
     }
     this.setTargetContents(scrollOption.targetContents);
     this.setContentsMask(scrollOption.contentsMask);
+
+    if (this._rate) {
+      this.updateContentsPositionWithRate(this._rate);
+    }
   }
 
   ///////////////////////////
@@ -183,16 +187,27 @@ export class ScrollBarView extends SliderView {
     return this.getSize(this._slideButton) == fullSize;
   }
 
+  /**
+   * スライダーイベントに応じてコンテンツをスクロールする
+   * @param {Object} e
+   */
   public updateContentsPosition = (e: Object) => {
     const evt = e as SliderEvent;
+    this.updateContentsPositionWithRate(evt.rate);
+  };
 
-    let zeroPos: number = this.getPosition(this._contentsMask);
-    let nextPos: number =
+  /**
+   * rate値を元にコンテンツをスクロールする。
+   * @param {number} rate
+   */
+  protected updateContentsPositionWithRate(rate: number): void {
+    const zeroPos: number = this.getPosition(this._contentsMask);
+    const nextPos: number =
       zeroPos -
-      (evt.rate / SliderView.MAX_RATE) *
+      (rate / SliderView.MAX_RATE) *
         (this.getSize(this._targetContents) - this.getSize(this._contentsMask));
     this.setPosition(this._targetContents, nextPos);
-  };
+  }
 
   protected onPressBaseFunction(evt: createjs.MouseEvent): void {
     if (this.isHide) return;

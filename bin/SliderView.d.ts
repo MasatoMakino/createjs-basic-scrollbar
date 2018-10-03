@@ -161,6 +161,7 @@ export declare class SliderView extends Container {
 export declare class SliderViewInitOption {
   minPosition: number;
   maxPosition: number;
+  rate?: number;
   base: DisplayObject;
   button: DisplayObject;
   mask?: Shape;

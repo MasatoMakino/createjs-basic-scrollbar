@@ -20,15 +20,13 @@ export class ScrollBarView extends SliderView {
   constructor(option, scrollOption) {
     super(option);
     this.autoHide = false;
+    /**
+     * スライダーイベントに応じてコンテンツをスクロールする
+     * @param {Object} e
+     */
     this.updateContentsPosition = e => {
       const evt = e;
-      let zeroPos = this.getPosition(this._contentsMask);
-      let nextPos =
-        zeroPos -
-        (evt.rate / SliderView.MAX_RATE) *
-          (this.getSize(this._targetContents) -
-            this.getSize(this._contentsMask));
-      this.setPosition(this._targetContents, nextPos);
+      this.updateContentsPositionWithRate(evt.rate);
     };
     if (scrollOption.contentsMask.parent != scrollOption.contentsMask.parent) {
       console.warn(
@@ -39,6 +37,9 @@ export class ScrollBarView extends SliderView {
     }
     this.setTargetContents(scrollOption.targetContents);
     this.setContentsMask(scrollOption.contentsMask);
+    if (this._rate) {
+      this.updateContentsPositionWithRate(this._rate);
+    }
   }
   ///////////////////////////
   //	Methods
@@ -156,6 +157,18 @@ export class ScrollBarView extends SliderView {
     }
     //マスクサイズとコンテンツサイズが同一の場合スライダーを隠す
     return this.getSize(this._slideButton) == fullSize;
+  }
+  /**
+   * rate値を元にコンテンツをスクロールする。
+   * @param {number} rate
+   */
+  updateContentsPositionWithRate(rate) {
+    const zeroPos = this.getPosition(this._contentsMask);
+    const nextPos =
+      zeroPos -
+      (rate / SliderView.MAX_RATE) *
+        (this.getSize(this._targetContents) - this.getSize(this._contentsMask));
+    this.setPosition(this._targetContents, nextPos);
   }
   onPressBaseFunction(evt) {
     if (this.isHide) return;

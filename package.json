@@ -1,6 +1,6 @@
 {
   "name": "createjs-basic-scrollbar",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Scrollbar library for CreateJS.",
   "main": "./bin/index.js",
   "types": "./bin/index.d.ts",

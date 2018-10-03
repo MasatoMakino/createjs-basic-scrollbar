@@ -73,6 +73,7 @@ export class SliderView extends Container {
     this._maxPosition = option.maxPosition;
     this.isHorizontal = option.isHorizontal;
     this.isReverse = option.isReverse;
+    this._rate = option.rate;
 
     this.swapBaseChildren();
 
@@ -433,6 +434,7 @@ export class SliderView extends Container {
 export class SliderViewInitOption {
   minPosition: number; //スライダーボタンの座標の最小値
   maxPosition: number; //スライダーボタンの座標の最大値
+  rate?: number;
   base: DisplayObject; //スライダーの地
   button: DisplayObject; //スライドボタン
   mask?: Shape; //バーのマスク 既定値 null
@@ -441,6 +443,9 @@ export class SliderViewInitOption {
   isReverse?: boolean; //反転スクロールか否か 既定値 false
 
   public static init(option: SliderViewInitOption): SliderViewInitOption {
+    if (option.rate == null) {
+      option.rate = 0.0;
+    }
     if (option.isHorizontal == null) {
       option.isHorizontal = true;
     }

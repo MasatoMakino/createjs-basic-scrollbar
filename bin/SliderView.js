@@ -109,6 +109,7 @@ export class SliderView extends Container {
     this._maxPosition = option.maxPosition;
     this.isHorizontal = option.isHorizontal;
     this.isReverse = option.isReverse;
+    this._rate = option.rate;
     this.swapBaseChildren();
     if (this._rate) {
       this.changeRate(this._rate);
@@ -360,6 +361,9 @@ SliderView.MAX_RATE = 100.0;
  */
 export class SliderViewInitOption {
   static init(option) {
+    if (option.rate == null) {
+      option.rate = 0.0;
+    }
     if (option.isHorizontal == null) {
       option.isHorizontal = true;
     }
