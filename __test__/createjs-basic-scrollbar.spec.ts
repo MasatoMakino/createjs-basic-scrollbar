@@ -1,7 +1,7 @@
 import { SliderEvent, SliderEventType } from "../src/index";
 import { SliderView, SliderViewInitOption } from "../src/index";
 import { ScrollBarView, ScrollBarViewInitOption } from "../src/index";
-// import { Stage, Shape } from "@createjs/easeljs";
+// import { Stage, Shape } from "../node_modules/@createjs/easeljs";
 
 describe("スライダー", () => {
   const canvas = document.createElement("canvas");
