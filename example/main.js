@@ -19,13 +19,12 @@ const onDomContentsLoaded = () => {
   };
 
   //stageの初期化
-  const canvas = document.getElementById("textCanvas");
-  canvas.width = 1280;
-  canvas.height = 480;
+  const canvas = document.getElementById("appCanvas");
   const stage = new createjs.Stage(canvas);
   createjs.Ticker.on("tick", updateStage);
 
   initSlider(stage);
+  initScrollBar(stage);
 };
 
 /**
@@ -84,6 +83,75 @@ const initSlider = stage => {
   stage.addChild(slider);
   slider.x = 200;
   slider.y = 200;
+};
+
+const initScrollBar = container => {
+  const SCROLLBAR_W = 16;
+  const SCROLLBAR_H = 360;
+  const SCROLLBAR_Y = 120;
+
+  const getBase = color => {
+    const shape = new createjs.Shape();
+    const g = shape.graphics;
+    g.beginFill(color);
+    g.drawRect(0, 0, SCROLLBAR_W, SCROLLBAR_H);
+    shape.setBounds(0, 0, SCROLLBAR_W, SCROLLBAR_H);
+    return shape;
+  };
+
+  const getButton = color => {
+    const shape = new createjs.Shape();
+    const g = shape.graphics;
+    g.beginFill(color);
+    g.drawRect(-SCROLLBAR_W / 2, -SCROLLBAR_W / 2, SCROLLBAR_W, SCROLLBAR_W);
+    shape.setBounds(
+      -SCROLLBAR_W / 2,
+      -SCROLLBAR_W / 2,
+      SCROLLBAR_W,
+      SCROLLBAR_W
+    );
+    shape.x = SCROLLBAR_W / 2;
+    return shape;
+  };
+
+  const scrollContents = new createjs.Container();
+  container.addChild(scrollContents);
+  scrollContents.x = 800;
+  scrollContents.y = SCROLLBAR_Y;
+
+  const contentsW = 240;
+  const contentsH = SCROLLBAR_H;
+  const getContents = (color, height) => {
+    const shape = new createjs.Shape();
+    const g = shape.graphics;
+    g.beginFill(color);
+    g.drawRect(0, 0, contentsW, height);
+    shape.setBounds(0, 0, contentsW, height);
+    console.log(shape.getBounds());
+    scrollContents.addChild(shape);
+    return shape;
+  };
+
+  const barOption = {
+    targetContents: getContents("#f0f", contentsH * 2),
+    contentsMask: getContents("rgba(0,0,255,0.3)", contentsH)
+  };
+
+  const scrollbar = new ScrollBarView(
+    {
+      base: getBase("#00f"),
+      button: getButton("#ff0"),
+      minPosition: 0,
+      maxPosition: SCROLLBAR_H,
+      rate: 30.0,
+      isHorizontal: false
+    },
+    barOption
+  );
+
+  container.addChild(scrollbar);
+  scrollbar.x = scrollContents.x + contentsW;
+  scrollbar.y = SCROLLBAR_Y;
 };
 
 /**

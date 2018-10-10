@@ -108,9 +108,7 @@ export class SliderView extends Container {
         this.isReverse = option.isReverse;
         this._rate = option.rate;
         this.swapBaseChildren();
-        if (this._rate != null) {
-            this.changeRate(this._rate);
-        }
+        this.changeRate(this._rate);
     }
     /**
      * パーツの重なり順を適正化する。
