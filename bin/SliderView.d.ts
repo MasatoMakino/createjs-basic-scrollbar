@@ -47,6 +47,7 @@ export declare class SliderView extends Container {
      * パーツの重なり順を適正化する。
      */
     private swapBaseChildren;
+    private addChildMe;
     /**
      * スライダーの位置を変更する
      * @param	rate	スライダーの位置 MIN 0.0 ~ MAX 100.0
@@ -166,5 +167,6 @@ export declare class SliderViewInitOption {
     isHorizontal?: boolean;
     isReverse?: boolean;
     static init(option: SliderViewInitOption): SliderViewInitOption;
+    protected static check(option: SliderViewInitOption): void;
 }
 //# sourceMappingURL=SliderView.d.ts.map

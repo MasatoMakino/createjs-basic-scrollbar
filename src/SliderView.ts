@@ -86,17 +86,15 @@ export class SliderView extends Container {
    * パーツの重なり順を適正化する。
    */
   private swapBaseChildren(): void {
-    if (this._base) {
-      this.removeChild(this._base);
-      this.addChild(this._base);
-    }
-    if (this._bar) {
-      this.removeChild(this._bar);
-      this.addChild(this._bar);
-    }
-    if (this._slideButton) {
-      this.removeChild(this._slideButton);
-      this.addChild(this._slideButton);
+    this.addChildMe(this._base);
+    this.addChildMe(this._bar);
+    this.addChildMe(this._slideButton);
+  }
+
+  private addChildMe(obj: DisplayObject): void {
+    if (obj) {
+      if (obj.parent) obj.parent.removeChild(obj);
+      this.addChild(obj);
     }
   }
 
@@ -349,9 +347,7 @@ export class SliderView extends Container {
     this._base = value;
     this._base.mouseEnabled = true;
     this._base.addEventListener("click", this.pressBase);
-    if (!value.parent) {
-      this.addChild(value);
-    }
+    this.addChildMe(value);
   }
 
   public get base(): DisplayObject {
@@ -365,9 +361,7 @@ export class SliderView extends Container {
     if (this._barMask) this._bar.mask = this._barMask;
     this._bar.mouseEnabled = false;
     // this._bar.mouseChildren = false;
-    if (!value.parent) {
-      this.addChildAt(value, 0);
-    }
+    this.addChildMe(value);
   }
 
   public set slideButton(value: DisplayObject) {
@@ -375,9 +369,7 @@ export class SliderView extends Container {
 
     this._slideButton = value;
     this._slideButton.addEventListener("mousedown", this.startMove);
-    if (!value.parent) {
-      this.addChild(value);
-    }
+    this.addChildMe(value);
   }
 
   public set barMask(value: Shape) {
@@ -386,9 +378,7 @@ export class SliderView extends Container {
     this._barMask = value;
     if (this._bar) this._bar.mask = this._barMask;
     this._barMask.mouseEnabled = false;
-    if (!value.parent) {
-      this.addChild(value);
-    }
+    this.addChildMe(value);
   }
 
   public set minPosition(value: number) {
@@ -452,6 +442,31 @@ export class SliderViewInitOption {
     if (option.isReverse == null) {
       option.isReverse = false;
     }
+
+    this.check(option);
     return option;
+  }
+
+  protected static check(option: SliderViewInitOption): void {
+    const checkBounds = (displayObject?: DisplayObject) => {
+      if (displayObject) {
+        if (displayObject.getBounds() === null) {
+          throw new Error(
+            "初期化オプションで指定されたShapeにバウンディングボックスが存在しません。Shapeを利用する場合はsetBounds関数を利用してバウンディングボックスを手動で設定してください。"
+          );
+        }
+
+        if (displayObject.parent) {
+          console.warn(
+            "初期化オプションで指定されたパーツがすでに別の親にaddChildされています。SliderViewおよびScrollBarViewの構成パーツはインスタンスにaddChildされることを前提としています。"
+          );
+        }
+      }
+    };
+
+    checkBounds(option.base);
+    checkBounds(option.button);
+    checkBounds(option.mask);
+    checkBounds(option.bar);
   }
 }

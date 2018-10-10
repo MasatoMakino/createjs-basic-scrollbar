@@ -14,18 +14,26 @@
     "@types/easeljs": "^1.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@types/jest": "^23.3.3",
+    "babel-loader": "^8.0.4",
     "cpx": "^1.5.0",
     "easeljs": "^1.0.2",
     "http-server": "^0.11.1",
     "husky": "^1.1.0",
     "prettier": "^1.14.3",
-    "typescript": "^3.1.1"
+    "typescript": "^3.1.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
   },
   "scripts": {
-    "build": "tsc && npm run prettier:src",
+    "build": "tsc && npm run prettier:src && npm run babel",
     "prettier:src": "prettier --write './!(bin)/**/*.{js,ts,json}' ",
-    "copy": "cpx './bin/**/*.js' ./example",
-    "server": "http-server ./example/ -o"
+    "server": "http-server ./example/ -o",
+    "copy": "cpx './bin/src/*' ./bin",
+    "remove": "rimraf ./bin/__test__ ./bin/src",
+    "babel": "webpack --mode development --module-bind js=babel-loader ./example/main.js --output ./example/bundle.js"
   },
   "husky": {
     "hooks": {

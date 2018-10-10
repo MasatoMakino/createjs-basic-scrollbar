@@ -1,6 +1,6 @@
-export { SliderEvent, SliderEventType } from "./SliderEvent.js";
-export { SliderView, SliderViewInitOption } from "./SliderView.js";
-export { ScrollBarView, ScrollBarViewInitOption } from "./ScrollBarView.js";
+import { SliderEvent, SliderEventType } from "../bin/index.js";
+import { SliderView, SliderViewInitOption } from "../bin/index.js";
+import { ScrollBarView, ScrollBarViewInitOption } from "../bin/index.js";
 
 const onDomContentsLoaded = () => {
   //FPSメーターの生成と配置
@@ -25,15 +25,17 @@ const onDomContentsLoaded = () => {
   const stage = new createjs.Stage(canvas);
   createjs.Ticker.on("tick", updateStage);
 
-  //スライダーの実装サンプル
+  initSlider(stage);
+};
 
-  const sliderContainer = new createjs.Container();
-  stage.addChild(sliderContainer);
-  sliderContainer.x = 200;
-  sliderContainer.y = 200;
-
+/**
+ * スライダーの実装サンプル
+ * @param stage
+ */
+const initSlider = stage => {
   const SLIDER_W = 200;
   const SLIDER_H = 64;
+
   const getSliderBase = color => {
     const shape = new createjs.Shape();
     const g = shape.graphics;
@@ -43,7 +45,17 @@ const onDomContentsLoaded = () => {
       .lineTo(SLIDER_W, SLIDER_H)
       .lineTo(0, 0)
       .endFill();
-    sliderContainer.addChild(shape);
+
+    shape.setBounds(0, 0, SLIDER_W, SLIDER_H);
+    return shape;
+  };
+
+  const getSliderMask = () => {
+    const shape = new createjs.Shape();
+    const g = shape.graphics;
+    g.beginFill("rgba( 255, 0, 255, 0.0)");
+    g.drawRect(0, 0, SLIDER_W, SLIDER_H);
+    shape.setBounds(0, 0, SLIDER_W, SLIDER_H);
     return shape;
   };
 
@@ -52,26 +64,26 @@ const onDomContentsLoaded = () => {
     const g = shape.graphics;
     g.beginFill(color);
     g.drawRect(-8, 0, 16, SLIDER_H);
-
-    sliderContainer.addChild(shape);
+    shape.setBounds(-8, 0, 16, SLIDER_H);
     return shape;
   };
 
-  const sliderBase = getSliderBase("#00f");
-  const sliderBar = getSliderBase("#0ff");
-  const sliderButton = getButton("#ff0");
-
   const slider = new SliderView({
-    base: sliderBase,
-    bar: sliderBar,
-    button: sliderButton,
+    base: getSliderBase("#00f"),
+    bar: getSliderBase("#0ff"),
+    button: getButton("rgba( 255, 255, 0, 0.5)"),
+    mask: getSliderMask(),
     minPosition: 0,
-    maxPosition: SLIDER_W
+    maxPosition: SLIDER_W,
+    rate: 50.0
   });
 
   slider.addEventListener(SliderEventType.CHANGE, e => {
     console.log(e.rate);
   });
+  stage.addChild(slider);
+  slider.x = 200;
+  slider.y = 200;
 };
 
 /**
