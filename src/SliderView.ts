@@ -5,29 +5,16 @@ import Shape = createjs.Shape;
 import { SliderEvent, SliderEventType } from "./SliderEvent";
 
 /**
- * ui.slider.SliderView
- *
- * スライダーの汎用クラス
- *
- * 初期設定
- *   1.ベース、バー、ボタン、ベースマスクとその可動範囲をinit関数で設定する。
- *   2.初期値をrateで指定する。
+ * スライダー用クラスです
  *
  * 使用上の注意
  *
  * オブジェクトのサイズの計測にgetBounds関数を使用しています。
  * shapeおよびContainerクラスでは、getBoundsの自動計測が効かない場合があるため
  * setBounds関数でサイズをあらかじめ与えてください。
- *
- * @author m_makino
- * @since 2017/05/31 16:09
  */
 
 export class SliderView extends Container {
-  ///////////////////////////
-  //	Member Variable
-  ///////////////////////////
-
   protected _base: DisplayObject; // スライダーの地
   protected _bar?: DisplayObject; // スライドにあわせて表示されるバー
   protected _barMask?: Shape; // バーのマスク
@@ -44,10 +31,6 @@ export class SliderView extends Container {
   protected isDragging: Boolean = false; // 現在スライド中か否か
   public isHorizontal: Boolean = true;
   public isReverse: Boolean = false;
-
-  ///////////////////////////
-  //	Methods
-  ///////////////////////////
 
   /**
    * コンストラクタ
@@ -389,10 +372,6 @@ export class SliderView extends Container {
   public get rate() {
     return this._rate;
   }
-
-  ///////////////////////////
-  //	dispose
-  ///////////////////////////
 
   /**
    * オブジェクトの廃棄処理

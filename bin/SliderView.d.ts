@@ -4,22 +4,13 @@ import DisplayObject = createjs.DisplayObject;
 import Shape = createjs.Shape;
 import { SliderEventType } from "./SliderEvent";
 /**
- * ui.slider.SliderView
- *
- * スライダーの汎用クラス
- *
- * 初期設定
- *   1.ベース、バー、ボタン、ベースマスクとその可動範囲をinit関数で設定する。
- *   2.初期値をrateで指定する。
+ * スライダー用クラスです
  *
  * 使用上の注意
  *
  * オブジェクトのサイズの計測にgetBounds関数を使用しています。
  * shapeおよびContainerクラスでは、getBoundsの自動計測が効かない場合があるため
  * setBounds関数でサイズをあらかじめ与えてください。
- *
- * @author m_makino
- * @since 2017/05/31 16:09
  */
 export declare class SliderView extends Container {
     protected _base: DisplayObject;

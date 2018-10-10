@@ -12,9 +12,6 @@ import { SliderView } from "./SliderView";
  * 初期設定の注意
  * 		 スクロール対象とマスクは同一の親をもつこと。
  * 		 ローカル、グローバルの座標変換は行っていないので別の親をもつとスクロールが破たんします。
- * ...
- * @author m_makino
- * @since 2017/05/31 16:09
  */
 export class ScrollBarView extends SliderView {
     constructor(option, scrollOption) {
@@ -33,9 +30,6 @@ export class ScrollBarView extends SliderView {
         this.setContentsMask(scrollOption.contentsMask);
         this.changeRate(option.rate);
     }
-    ///////////////////////////
-    //	Methods
-    ///////////////////////////
     /**
      * 初期化処理
      * @param {SliderViewInitOption} option
@@ -44,9 +38,6 @@ export class ScrollBarView extends SliderView {
         super.init(option);
         this.initSliderButtonSize();
     }
-    ///////////////////////////
-    //	SliderButtonの移動範囲制限
-    ///////////////////////////
     /**
      * スライダーボタンの位置を制限する関数
      * @return 制限で切り落とされたスライダーボタンの座標値

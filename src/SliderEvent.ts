@@ -1,6 +1,6 @@
 /**
- * ...
- * @author m_makino
+ * スライダーが移動した際に発行されるイベントです。
+ * 現状のスライダー位置を報告します。
  */
 export class SliderEvent extends createjs.Event {
   public rate: number;

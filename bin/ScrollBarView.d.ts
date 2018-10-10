@@ -13,9 +13,6 @@ import { SliderView, SliderViewInitOption } from "./SliderView";
  * 初期設定の注意
  * 		 スクロール対象とマスクは同一の親をもつこと。
  * 		 ローカル、グローバルの座標変換は行っていないので別の親をもつとスクロールが破たんします。
- * ...
- * @author m_makino
- * @since 2017/05/31 16:09
  */
 export declare class ScrollBarView extends SliderView {
     protected _targetContents: DisplayObject;

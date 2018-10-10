@@ -2,27 +2,15 @@ var Container = createjs.Container;
 var Point = createjs.Point;
 import { SliderEvent, SliderEventType } from "./SliderEvent";
 /**
- * ui.slider.SliderView
- *
- * スライダーの汎用クラス
- *
- * 初期設定
- *   1.ベース、バー、ボタン、ベースマスクとその可動範囲をinit関数で設定する。
- *   2.初期値をrateで指定する。
+ * スライダー用クラスです
  *
  * 使用上の注意
  *
  * オブジェクトのサイズの計測にgetBounds関数を使用しています。
  * shapeおよびContainerクラスでは、getBoundsの自動計測が効かない場合があるため
  * setBounds関数でサイズをあらかじめ与えてください。
- *
- * @author m_makino
- * @since 2017/05/31 16:09
  */
 export class SliderView extends Container {
-    ///////////////////////////
-    //	Methods
-    ///////////////////////////
     /**
      * コンストラクタ
      * @param {SliderViewInitOption} option
@@ -80,9 +68,6 @@ export class SliderView extends Container {
         this.pressBase = (evt) => {
             this.onPressBaseFunction(evt);
         };
-        ///////////////////////////
-        //	dispose
-        ///////////////////////////
         /**
          * オブジェクトの廃棄処理
          * @param	e

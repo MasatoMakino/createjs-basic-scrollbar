@@ -1,7 +1,7 @@
 /// <reference types="createjs-lib" />
 /**
- * ...
- * @author m_makino
+ * スライダーが移動した際に発行されるイベントです。
+ * 現状のスライダー位置を報告します。
  */
 export declare class SliderEvent extends createjs.Event {
     rate: number;

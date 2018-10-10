@@ -127,7 +127,6 @@ const initScrollBar = container => {
     g.beginFill(color);
     g.drawRect(0, 0, contentsW, height);
     shape.setBounds(0, 0, contentsW, height);
-    console.log(shape.getBounds());
     scrollContents.addChild(shape);
     return shape;
   };
