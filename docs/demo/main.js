@@ -27,6 +27,38 @@ const onDomContentsLoaded = () => {
   initScrollBar(stage);
 };
 
+const getSliderBase = (w, h, color) => {
+  const shape = new createjs.Shape();
+  const g = shape.graphics;
+  g.beginFill(color);
+  g.moveTo(0, 0)
+    .lineTo(w, 0)
+    .lineTo(w, h)
+    .lineTo(0, 0)
+    .endFill();
+
+  shape.setBounds(0, 0, w, h);
+  return shape;
+};
+
+const getSliderMask = (w, h) => {
+  const shape = new createjs.Shape();
+  const g = shape.graphics;
+  g.beginFill("rgba( 255, 0, 255, 0.0)");
+  g.drawRect(0, 0, w, h);
+  shape.setBounds(0, 0, w, h);
+  return shape;
+};
+
+const getSliderButton = (w, h, color) => {
+  const shape = new createjs.Shape();
+  const g = shape.graphics;
+  g.beginFill(color);
+  g.drawRect(-8, 0, 16, h);
+  shape.setBounds(-8, 0, 16, h);
+  return shape;
+};
+
 /**
  * スライダーの実装サンプル
  * @param stage
@@ -35,43 +67,11 @@ const initSlider = stage => {
   const SLIDER_W = 200;
   const SLIDER_H = 64;
 
-  const getSliderBase = color => {
-    const shape = new createjs.Shape();
-    const g = shape.graphics;
-    g.beginFill(color);
-    g.moveTo(0, 0)
-      .lineTo(SLIDER_W, 0)
-      .lineTo(SLIDER_W, SLIDER_H)
-      .lineTo(0, 0)
-      .endFill();
-
-    shape.setBounds(0, 0, SLIDER_W, SLIDER_H);
-    return shape;
-  };
-
-  const getSliderMask = () => {
-    const shape = new createjs.Shape();
-    const g = shape.graphics;
-    g.beginFill("rgba( 255, 0, 255, 0.0)");
-    g.drawRect(0, 0, SLIDER_W, SLIDER_H);
-    shape.setBounds(0, 0, SLIDER_W, SLIDER_H);
-    return shape;
-  };
-
-  const getButton = color => {
-    const shape = new createjs.Shape();
-    const g = shape.graphics;
-    g.beginFill(color);
-    g.drawRect(-8, 0, 16, SLIDER_H);
-    shape.setBounds(-8, 0, 16, SLIDER_H);
-    return shape;
-  };
-
   const slider = new SliderView({
-    base: getSliderBase("#00f"),
-    bar: getSliderBase("#0ff"),
-    button: getButton("rgba( 255, 255, 0, 0.5)"),
-    mask: getSliderMask(),
+    base: getSliderBase(SLIDER_W, SLIDER_H, "#00f"),
+    bar: getSliderBase(SLIDER_W, SLIDER_H, "#0ff"),
+    button: getSliderButton(SLIDER_W, SLIDER_H, "rgba( 255, 255, 0, 0.5)"),
+    mask: getSliderMask(SLIDER_W, SLIDER_H),
     minPosition: 0,
     maxPosition: SLIDER_W,
     rate: 50.0
@@ -85,61 +85,69 @@ const initSlider = stage => {
   slider.y = 200;
 };
 
-const initScrollBar = container => {
+const getScrollBarBase = (w, h, color) => {
+  const shape = new createjs.Shape();
+  const g = shape.graphics;
+  g.beginFill(color);
+  g.drawRect(0, 0, w, h);
+  shape.setBounds(0, 0, w, h);
+  return shape;
+};
+
+const getScrollBarButton = (width, color) => {
+  const shape = new createjs.Shape();
+  const g = shape.graphics;
+  g.beginFill(color);
+  g.drawRect(-width / 2, -width / 2, width, width);
+  shape.setBounds(-width / 2, -width / 2, width, width);
+  shape.x = width / 2;
+  return shape;
+};
+
+const getScrollBarContents = (color, w, h, container) => {
+  const shape = new createjs.Shape();
+  const g = shape.graphics;
+  g.beginFill(color);
+  g.drawRect(0, 0, w, h);
+  shape.setBounds(0, 0, w, h);
+  container.addChild(shape);
+  return shape;
+};
+
+/**
+ * スクロールバーの実装サンプル
+ * @param stage
+ */
+const initScrollBar = stage => {
   const SCROLLBAR_W = 16;
   const SCROLLBAR_H = 360;
   const SCROLLBAR_Y = 120;
+  const CONTENTS_W = 240;
 
-  const getBase = color => {
-    const shape = new createjs.Shape();
-    const g = shape.graphics;
-    g.beginFill(color);
-    g.drawRect(0, 0, SCROLLBAR_W, SCROLLBAR_H);
-    shape.setBounds(0, 0, SCROLLBAR_W, SCROLLBAR_H);
-    return shape;
-  };
-
-  const getButton = color => {
-    const shape = new createjs.Shape();
-    const g = shape.graphics;
-    g.beginFill(color);
-    g.drawRect(-SCROLLBAR_W / 2, -SCROLLBAR_W / 2, SCROLLBAR_W, SCROLLBAR_W);
-    shape.setBounds(
-      -SCROLLBAR_W / 2,
-      -SCROLLBAR_W / 2,
-      SCROLLBAR_W,
-      SCROLLBAR_W
-    );
-    shape.x = SCROLLBAR_W / 2;
-    return shape;
-  };
-
-  const scrollContents = new createjs.Container();
-  container.addChild(scrollContents);
-  scrollContents.x = 800;
-  scrollContents.y = SCROLLBAR_Y;
-
-  const contentsW = 240;
-  const contentsH = SCROLLBAR_H;
-  const getContents = (color, height) => {
-    const shape = new createjs.Shape();
-    const g = shape.graphics;
-    g.beginFill(color);
-    g.drawRect(0, 0, contentsW, height);
-    shape.setBounds(0, 0, contentsW, height);
-    scrollContents.addChild(shape);
-    return shape;
-  };
+  const container = new createjs.Container();
+  stage.addChild(container);
+  container.x = 800;
+  container.y = SCROLLBAR_Y;
 
   const barOption = {
-    targetContents: getContents("#f0f", contentsH * 2),
-    contentsMask: getContents("rgba(0,0,255,0.3)", contentsH)
+    targetContents: getScrollBarContents(
+      "#f0f",
+      CONTENTS_W,
+      SCROLLBAR_H * 2,
+      container
+    ),
+    contentsMask: getScrollBarContents(
+      "rgba(0,0,255,0.3)",
+      CONTENTS_W,
+      SCROLLBAR_H,
+      container
+    )
   };
 
   const scrollbar = new ScrollBarView(
     {
-      base: getBase("#00f"),
-      button: getButton("#ff0"),
+      base: getScrollBarBase(SCROLLBAR_W, SCROLLBAR_H, "#00f"),
+      button: getScrollBarButton(SCROLLBAR_W, "#ff0"),
       minPosition: 0,
       maxPosition: SCROLLBAR_H,
       rate: 30.0,
@@ -148,8 +156,8 @@ const initScrollBar = container => {
     barOption
   );
 
-  container.addChild(scrollbar);
-  scrollbar.x = scrollContents.x + contentsW;
+  stage.addChild(scrollbar);
+  scrollbar.x = container.x + CONTENTS_W;
   scrollbar.y = SCROLLBAR_Y;
 };
 
