@@ -23,6 +23,8 @@ export class SliderView extends Container {
 
   protected _minPosition: number; // スライダーボタンの座標の最小値
   protected _maxPosition: number; // スライダーボタンの座標の最大値
+  protected isHorizontal: Boolean = true;
+  protected isReverse: Boolean = false;
 
   protected dragStartPos: createjs.Point = new createjs.Point();
 
@@ -30,8 +32,6 @@ export class SliderView extends Container {
   public static readonly MAX_RATE: number = 100.0;
 
   protected isDragging: Boolean = false; // 現在スライド中か否か
-  public isHorizontal: Boolean = true;
-  public isReverse: Boolean = false;
 
   /**
    * コンストラクタ
@@ -125,7 +125,6 @@ export class SliderView extends Container {
    * @param	evt
    */
   private moveSlider = (e: any) => {
-
     const evt = e as createjs.MouseEvent;
     let mousePos: number = this.limitSliderButtonPosition(evt);
 
@@ -168,7 +167,7 @@ export class SliderView extends Container {
 
   /**
    * スライダーの変更に関するイベントを発行する
-   * @param	type
+   * @param {SliderEventType} type
    */
   protected dispatchSliderEvent(type: SliderEventType): void {
     let currentRate: number = this._rate;
@@ -316,8 +315,8 @@ export class SliderView extends Container {
     if (!value) return;
     this._base = value;
     this._base.mouseEnabled = true;
-    this._base.addEventListener("click", (e) =>{
-      this.onPressBase( e as createjs.MouseEvent);
+    this._base.addEventListener("click", e => {
+      this.onPressBase(e as createjs.MouseEvent);
     });
     this.addChildMe(value);
   }
@@ -366,6 +365,7 @@ export class SliderView extends Container {
   }
 
   /**
+   * このインスタンスを破棄する。
    * @param	e
    */
   public dispose = (e?: any) => {

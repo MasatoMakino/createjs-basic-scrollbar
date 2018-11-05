@@ -10,8 +10,8 @@ export class SliderViewOption {
   rate?: number;
   base: DisplayObject; //スライダーの地
   button: DisplayObject; //スライドボタン
-  mask?: Shape; //バーのマスク 既定値 null
-  bar?: DisplayObject; //スライドにあわせて表示されるバー 既定値 null
+  mask?: Shape; //バーのマスク
+  bar?: DisplayObject; //スライドにあわせて表示されるバー
   isHorizontal?: boolean; //水平スクロールか否か 既定値 true
   isReverse?: boolean; //反転スクロールか否か 既定値 false
 
