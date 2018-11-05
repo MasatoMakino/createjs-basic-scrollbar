@@ -34,6 +34,7 @@ export class ScrollBarView extends SliderView {
 
   /**
    * 初期化処理
+   * スライダーボタンの位置の初期化に加え、サイズの初期化も行う
    * @param {SliderViewOption} option
    */
   protected init(option: SliderViewOption): void {
@@ -47,7 +48,7 @@ export class ScrollBarView extends SliderView {
    */
   protected limitSliderButtonPosition(evt: createjs.MouseEvent): number {
     let mousePos: number = this.getMousePosition(this, evt);
-    let sliderSize: number = this.slideButtonSize;
+    const sliderSize: number = this.slideButtonSize;
 
     mousePos = Math.min(this._maxPosition - sliderSize / 2, mousePos);
     mousePos = Math.max(this._minPosition + sliderSize / 2, mousePos);
@@ -60,9 +61,9 @@ export class ScrollBarView extends SliderView {
    * @return
    */
   protected changeRateToPixel(rate: number): number {
-    let buttonSize: number = this.slideButtonSize;
-    let currentMax: number = this._maxPosition - buttonSize / 2;
-    let currentMin: number = this._minPosition + buttonSize / 2;
+    const buttonSize: number = this.slideButtonSize;
+    const currentMax: number = this._maxPosition - buttonSize / 2;
+    const currentMin: number = this._minPosition + buttonSize / 2;
 
     let currentPix: number =
       ((currentMax - currentMin) * rate) / SliderView.MAX_RATE + currentMin;
@@ -77,9 +78,9 @@ export class ScrollBarView extends SliderView {
    * @return
    */
   protected changePixelToRate(pixel: number): number {
-    let buttonSize: number = this.slideButtonSize;
-    let currentMax: number = this._maxPosition - buttonSize / 2;
-    let currentMin: number = this._minPosition + buttonSize / 2;
+    const buttonSize: number = this.slideButtonSize;
+    const currentMax: number = this._maxPosition - buttonSize / 2;
+    const currentMin: number = this._minPosition + buttonSize / 2;
 
     let currentRate: number =
       ((pixel - currentMin) / (currentMax - currentMin)) * SliderView.MAX_RATE;
@@ -115,11 +116,11 @@ export class ScrollBarView extends SliderView {
   }
 
   protected initSliderPosition(): void {
-    let zeroPos: number = this.getPosition(this._contentsMask);
-    let contentsPos: number = this.getPosition(this._targetContents);
+    const zeroPos: number = this.getPosition(this._contentsMask);
+    const contentsPos: number = this.getPosition(this._targetContents);
 
-    let posDif: number = zeroPos - contentsPos;
-    let sizeDif: number =
+    const posDif: number = zeroPos - contentsPos;
+    const sizeDif: number =
       this.getSize(this._targetContents) - this.getSize(this._contentsMask);
 
     this.changeRate((posDif / sizeDif) * SliderView.MAX_RATE);
@@ -133,10 +134,10 @@ export class ScrollBarView extends SliderView {
       return;
     }
 
-    let fullSize: number = this._maxPosition - this._minPosition;
+    const fullSize: number = this._maxPosition - this._minPosition;
 
-    let contentsSize: number = this.getSize(this._targetContents);
-    let maskSize: number = this.getSize(this._contentsMask);
+    const contentsSize: number = this.getSize(this._targetContents);
+    const maskSize: number = this.getSize(this._contentsMask);
 
     let sliderSize: number = (fullSize * maskSize) / contentsSize;
     if (sliderSize > fullSize) {
@@ -156,9 +157,9 @@ export class ScrollBarView extends SliderView {
     //autoHideが設定されていない場合は常に表示
     if (!this.autoHide) return false;
 
-    let fullSize: number = this._maxPosition - this._minPosition;
-    let contentsSize: number = this.getSize(this._targetContents);
-    let maskSize: number = this.getSize(this._contentsMask);
+    const fullSize: number = this._maxPosition - this._minPosition;
+    const contentsSize: number = this.getSize(this._targetContents);
+    const maskSize: number = this.getSize(this._contentsMask);
 
     //マスク、コンテンツ、スクロール幅のいずれかが0以下の場合スライダーを隠す
     if (contentsSize < 0 || maskSize < 0 || fullSize < 0) {

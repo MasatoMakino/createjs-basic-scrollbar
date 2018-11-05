@@ -5,56 +5,53 @@ import { SliderViewOption } from "./SliderViewOption";
 /**
  * スライダー用クラスです
  *
- * 使用上の注意
- *
+ * 使用上の注意 :
  * オブジェクトのサイズの計測にgetBounds関数を使用しています。
- * shapeおよびContainerクラスでは、getBoundsの自動計測が効かない場合があるため
+ * shapeおよびContainerクラスでは、getBoundsの自動計測が効かない場合があります。
  * setBounds関数でサイズをあらかじめ与えてください。
  */
 export class SliderView extends Container {
     /**
-     * コンストラクタ
      * @param {SliderViewOption} option
      */
     constructor(option) {
         super();
         this.isHorizontal = true;
-        // protected isReverse: Boolean = false;
         this.dragStartPos = new createjs.Point();
         this.isDragging = false; // 現在スライド中か否か
         /**
          * スライダーのドラッグを開始する
-         * @param	evt
+         * @param {Object} e
          */
         this.startMove = (e) => {
             const evt = e;
             this.isDragging = true;
             const target = evt.currentTarget;
-            let localPos = this.globalToLocal(evt.stageX, evt.stageY);
+            const localPos = this.globalToLocal(evt.stageX, evt.stageY);
             this.dragStartPos = new Point(localPos.x - target.x, localPos.y - target.y);
             this.stage.addEventListener("pressmove", this.moveSlider);
             this.stage.addEventListener("pressup", this.moveSliderFinish);
         };
         /**
          * スライダーのドラッグ中の処理
-         * @param	evt
+         * @param e
          */
         this.moveSlider = (e) => {
             const evt = e;
-            let mousePos = this.limitSliderButtonPosition(evt);
+            const mousePos = this.limitSliderButtonPosition(evt);
             this.updateParts(mousePos);
-            this._rate = this.changePixexToRate(mousePos);
-            this.dispatchSliderEvent(SliderEventType.CHANGE);
+            this._rate = this.changePixelToRate(mousePos);
+            this.dispatchEvent(new SliderEvent(SliderEventType.CHANGE, this.rate));
         };
         /**
          * スライダーのドラッグ終了時の処理
-         * @param	evt
+         * @param	e
          */
         this.moveSliderFinish = (e) => {
             this.isDragging = false;
             this.stage.removeEventListener("pressmove", this.moveSlider);
             this.stage.removeEventListener("pressup", this.moveSliderFinish);
-            this.dispatchSliderEvent(SliderEventType.CHANGE_FINISH);
+            this.dispatchEvent(new SliderEvent(SliderEventType.CHANGE_FINISH, this.rate));
         };
         /**
          * このインスタンスを破棄する。
@@ -67,6 +64,7 @@ export class SliderView extends Container {
     }
     /**
      * 初期化処理
+     * @param {SliderViewOption} option
      */
     init(option) {
         option = SliderViewOption.init(option);
@@ -78,16 +76,11 @@ export class SliderView extends Container {
         this._maxPosition = option.maxPosition;
         this.isHorizontal = option.isHorizontal;
         this._rate = option.rate;
-        this.swapBaseChildren();
-        this.changeRate(this._rate);
-    }
-    /**
-     * パーツの重なり順を適正化する。
-     */
-    swapBaseChildren() {
+        //パーツの重なり順を適正化する。
         this.addChildMe(this._base);
         this.addChildMe(this._bar);
         this.addChildMe(this._slideButton);
+        this.changeRate(this._rate);
     }
     addChildMe(obj) {
         if (!obj)
@@ -105,17 +98,9 @@ export class SliderView extends Container {
         if (this.isDragging)
             return;
         this._rate = rate;
-        this.updateSliderPositions();
-        this.dispatchSliderEvent(SliderEventType.CHANGE);
-    }
-    /**
-     * スライダーの位置を調整する。
-     * changeRate関数の内部関数
-     */
-    updateSliderPositions() {
-        const pos = this.changeRateToPixcel(this._rate);
-        //各MCの位置、幅を調整
+        const pos = this.changeRateToPixel(this._rate);
         this.updateParts(pos);
+        this.dispatchEvent(new SliderEvent(SliderEventType.CHANGE, this.rate));
     }
     /**
      * スライダーボタンの位置を制限する関数
@@ -145,14 +130,6 @@ export class SliderView extends Container {
         }
     }
     /**
-     * スライダーの変更に関するイベントを発行する
-     * @param {SliderEventType} type
-     */
-    dispatchSliderEvent(type) {
-        const e = new SliderEvent(type, this.rate);
-        this.dispatchEvent(e);
-    }
-    /**
      * スライダーの地をクリックした際の処理
      * その位置までスライダーをジャンプする
      * @param {createjs.MouseEvent} evt
@@ -160,14 +137,14 @@ export class SliderView extends Container {
     onPressBase(evt) {
         this.dragStartPos = new Point();
         this.moveSlider(evt);
-        this.dispatchSliderEvent(SliderEventType.CHANGE_FINISH);
+        this.dispatchEvent(new SliderEvent(SliderEventType.CHANGE_FINISH, this.rate));
     }
     /**
      * スライダーの割合から、スライダーの位置を取得する
      * @param	rate
      * @return
      */
-    changeRateToPixcel(rate) {
+    changeRateToPixel(rate) {
         let currentPix = ((this._maxPosition - this._minPosition) * rate) / SliderView.MAX_RATE +
             this._minPosition;
         currentPix =
@@ -179,11 +156,11 @@ export class SliderView extends Container {
         return currentPix;
     }
     /**
-     * スライダーのX座標から、スライダーの割合を取得する
+     * スライダーの座標から、スライダーの割合を取得する
      * @param	pixel
      * @return
      */
-    changePixexToRate(pixel) {
+    changePixelToRate(pixel) {
         let currentRate = ((pixel - this._minPosition) / (this._maxPosition - this._minPosition)) *
             SliderView.MAX_RATE;
         currentRate = currentRate > 0.0 ? currentRate : 0.0;
@@ -212,6 +189,8 @@ export class SliderView extends Container {
      * @param	position
      */
     setPosition(displayObj, position) {
+        if (!displayObj)
+            return;
         if (this.isHorizontal) {
             displayObj.x = position;
         }
@@ -226,7 +205,7 @@ export class SliderView extends Container {
      * @return
      */
     getMousePosition(displayObj, evt) {
-        let localPos = displayObj.globalToLocal(evt.stageX, evt.stageY);
+        const localPos = displayObj.globalToLocal(evt.stageX, evt.stageY);
         if (this.isHorizontal) {
             return localPos.x - this.dragStartPos.x;
         }
@@ -282,7 +261,6 @@ export class SliderView extends Container {
         if (this._barMask)
             this._bar.mask = this._barMask;
         this._bar.mouseEnabled = false;
-        // this._bar.mouseChildren = false;
         this.addChildMe(value);
     }
     set slideButton(value) {

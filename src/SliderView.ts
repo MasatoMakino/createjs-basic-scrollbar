@@ -8,10 +8,9 @@ import { SliderViewOption } from "./SliderViewOption";
 /**
  * スライダー用クラスです
  *
- * 使用上の注意
- *
+ * 使用上の注意 :
  * オブジェクトのサイズの計測にgetBounds関数を使用しています。
- * shapeおよびContainerクラスでは、getBoundsの自動計測が効かない場合があるため
+ * shapeおよびContainerクラスでは、getBoundsの自動計測が効かない場合があります。
  * setBounds関数でサイズをあらかじめ与えてください。
  */
 
@@ -24,25 +23,17 @@ export class SliderView extends Container {
   protected _minPosition: number; // スライダーボタンの座標の最小値
   protected _maxPosition: number; // スライダーボタンの座標の最大値
   protected isHorizontal: Boolean = true;
-  // protected isReverse: Boolean = false;
 
   protected dragStartPos: createjs.Point = new createjs.Point();
-
   /**
    * 現在のスライダーの位置の割合。
    * MIN 0.0 ~ SliderView.MAX_RATE。
-   *
-   * この変数はスライダーの内部処理のために利用され、isReverseフラグとは関係がなく左上を原点とする値で保存される。
-   * get rateおよびset rate関数を通すタイミングで、isReverseフラグに応じて数値が反転する。
    */
   private _rate: number;
-
   public static readonly MAX_RATE: number = 100.0;
-
   protected isDragging: Boolean = false; // 現在スライド中か否か
 
   /**
-   * コンストラクタ
    * @param {SliderViewOption} option
    */
   constructor(option: SliderViewOption) {
@@ -52,6 +43,7 @@ export class SliderView extends Container {
 
   /**
    * 初期化処理
+   * @param {SliderViewOption} option
    */
   protected init(option: SliderViewOption): void {
     option = SliderViewOption.init(option);
@@ -65,17 +57,12 @@ export class SliderView extends Container {
     this.isHorizontal = option.isHorizontal;
     this._rate = option.rate;
 
-    this.swapBaseChildren();
-    this.changeRate(this._rate);
-  }
-
-  /**
-   * パーツの重なり順を適正化する。
-   */
-  private swapBaseChildren(): void {
+    //パーツの重なり順を適正化する。
     this.addChildMe(this._base);
     this.addChildMe(this._bar);
     this.addChildMe(this._slideButton);
+
+    this.changeRate(this._rate);
   }
 
   private addChildMe(obj: DisplayObject): void {
@@ -93,23 +80,15 @@ export class SliderView extends Container {
     if (this.isDragging) return;
 
     this._rate = rate;
-    this.updateSliderPositions();
+    const pos: number = this.changeRateToPixel(this._rate);
+    this.updateParts(pos);
+
     this.dispatchEvent(new SliderEvent(SliderEventType.CHANGE, this.rate));
   }
 
   /**
-   * スライダーの位置を調整する。
-   * changeRate関数の内部関数
-   */
-  private updateSliderPositions(): void {
-    const pos: number = this.changeRateToPixel(this._rate);
-    //各MCの位置、幅を調整
-    this.updateParts(pos);
-  }
-
-  /**
    * スライダーのドラッグを開始する
-   * @param	evt
+   * @param {Object} e
    */
   private startMove = (e: Object) => {
     const evt = e as createjs.MouseEvent;
@@ -126,7 +105,7 @@ export class SliderView extends Container {
 
   /**
    * スライダーのドラッグ中の処理
-   * @param	evt
+   * @param e
    */
   private moveSlider = (e: any) => {
     const evt = e as createjs.MouseEvent;
@@ -169,9 +148,9 @@ export class SliderView extends Container {
 
   /**
    * スライダーのドラッグ終了時の処理
-   * @param	evt
+   * @param	e
    */
-  protected moveSliderFinish = (e: Object) => {
+  private moveSliderFinish = (e: Object) => {
     this.isDragging = false;
     this.stage.removeEventListener("pressmove", this.moveSlider);
     this.stage.removeEventListener("pressup", this.moveSliderFinish);

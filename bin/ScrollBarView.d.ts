@@ -22,6 +22,7 @@ export declare class ScrollBarView extends SliderView {
     constructor(option: SliderViewOption, scrollOption: ScrollBarViewInitOption);
     /**
      * 初期化処理
+     * スライダーボタンの位置の初期化に加え、サイズの初期化も行う
      * @param {SliderViewOption} option
      */
     protected init(option: SliderViewOption): void;
@@ -35,13 +36,13 @@ export declare class ScrollBarView extends SliderView {
      * @param	rate
      * @return
      */
-    protected changeRateToPixcel(rate: number): number;
+    protected changeRateToPixel(rate: number): number;
     /**
      * スライダーの座標から、スライダーの割合を取得する
      * @param	pixel
      * @return
      */
-    protected changePixexToRate(pixel: number): number;
+    protected changePixelToRate(pixel: number): number;
     /**
      * スライダーボタンのサイズ。
      * @returns {number}
