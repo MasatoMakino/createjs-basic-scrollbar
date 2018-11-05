@@ -1,6 +1,6 @@
-import { SliderEvent, SliderEventType } from "../bin/index.js";
-import { SliderView, SliderViewInitOption } from "../bin/index.js";
-import { ScrollBarView, ScrollBarViewInitOption } from "../bin/index.js";
+import { SliderEvent, SliderEventType } from "../../bin/index.js";
+import { SliderView, SliderViewInitOption } from "../../bin/index.js";
+import { ScrollBarView, ScrollBarViewInitOption } from "../../bin/index.js";
 
 const onDomContentsLoaded = () => {
   //FPSメーターの生成と配置

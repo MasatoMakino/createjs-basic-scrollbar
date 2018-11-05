@@ -56,10 +56,6 @@ export class ScrollBarView extends SliderView {
     return mousePos;
   }
 
-  ///////////////////////////
-  //	ピクセル位置 <-> 割合の相互変換
-  ///////////////////////////
-
   /**
    * スライダーの割合から、スライダーの位置を取得する
    * @param	rate
@@ -94,10 +90,10 @@ export class ScrollBarView extends SliderView {
     return currentRate;
   }
 
-  ///////////////////////////
-  //	スライドバーのサイズ更新
-  ///////////////////////////
-
+  /**
+   * スライダーボタンのサイズ。
+   * @returns {number}
+   */
   get slideButtonSize(): number {
     this.updateSlideButtonSize();
     return this.getSize(this._slideButton);
@@ -131,6 +127,9 @@ export class ScrollBarView extends SliderView {
     this.changeRate((posDif / sizeDif) * SliderView.MAX_RATE);
   }
 
+  /**
+   * スライダーボタンのサイズの伸縮を行う。
+   */
   protected updateSlideButtonSize(): void {
     if (!this._targetContents || !this._contentsMask || !this._slideButton) {
       return;
@@ -150,8 +149,6 @@ export class ScrollBarView extends SliderView {
 
     //autoHideの条件に一致するかを判定し、表示を切り替える。
     this._slideButton.visible = this._slideButton.mouseEnabled = !this.isHide;
-    // buttonMode = useHandCursor = !isHide;
-    // _slideButton.buttonMode = this._slideButton.useHandCursor = !isHide;
   }
 
   /**
@@ -201,10 +198,6 @@ export class ScrollBarView extends SliderView {
     super.onPressBaseFunction(evt);
   }
 
-  ///////////////////////////
-  //	getter / setter
-  ///////////////////////////
-
   public get targetContents(): DisplayObject {
     return this._targetContents;
   }
@@ -245,7 +238,7 @@ export class ScrollBarViewInitOption {
   public static check(option: ScrollBarViewInitOption) {
     if (option.contentsMask.parent != option.contentsMask.parent) {
       console.warn(
-        "ScrollBarView : スクロールするコンテンツと、そのマスクは同一の親を持っている必要があります。",
+        "ScrollBarView : スクロールするコンテンツと、そのマスクは表示ツリー上で同一の親Containerを持っている必要があります。",
         option.targetContents,
         option.contentsMask
       );
