@@ -191,9 +191,9 @@ export class ScrollBarView extends SliderView {
     this.setPosition(this._targetContents, nextPos);
   }
 
-  protected onPressBaseFunction(evt: createjs.MouseEvent): void {
+  protected onPressBase(evt: createjs.MouseEvent): void {
     if (this.isHide) return;
-    super.onPressBaseFunction(evt);
+    super.onPressBase(evt);
   }
 
   public get targetContents(): DisplayObject {

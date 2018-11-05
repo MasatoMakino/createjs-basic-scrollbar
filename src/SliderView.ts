@@ -92,6 +92,7 @@ export class SliderView extends Container {
     //イベントを発行
     this.dispatchSliderEvent(SliderEventType.CHANGE);
   }
+
   /**
    * スライダーの位置を調整する。
    * changeRate関数の内部関数
@@ -124,16 +125,13 @@ export class SliderView extends Container {
    * @param	evt
    */
   private moveSlider = (e: any) => {
+
     const evt = e as createjs.MouseEvent;
-    //現在のスライダー位置を算出
     let mousePos: number = this.limitSliderButtonPosition(evt);
 
-    //各MCの位置、幅を調整
     this.updateParts(mousePos);
 
-    //レートに反映
     this._rate = this.changePixexToRate(mousePos);
-
     this.dispatchSliderEvent(SliderEventType.CHANGE);
   };
 
@@ -187,15 +185,10 @@ export class SliderView extends Container {
    * @param	evt
    */
   protected moveSliderFinish = (e: Object) => {
-    const evt = e as createjs.MouseEvent;
     this.isDragging = false;
     this.stage.removeEventListener("pressmove", this.moveSlider);
     this.stage.removeEventListener("pressup", this.moveSliderFinish);
     this.dispatchSliderEvent(SliderEventType.CHANGE_FINISH);
-  };
-
-  protected pressBase = (evt: Object) => {
-    this.onPressBaseFunction(evt as createjs.MouseEvent);
   };
 
   /**
@@ -203,7 +196,7 @@ export class SliderView extends Container {
    * その位置までスライダーをジャンプする
    * @param {createjs.MouseEvent} evt
    */
-  protected onPressBaseFunction(evt: createjs.MouseEvent): void {
+  protected onPressBase(evt: createjs.MouseEvent): void {
     this.dragStartPos = new Point();
     this.moveSlider(evt);
     this.dispatchSliderEvent(SliderEventType.CHANGE_FINISH);
@@ -306,8 +299,8 @@ export class SliderView extends Container {
 
   /**
    * スクロール方向の高さ、もしくは幅を設定する
-   * @param	displayObj
-   * @return
+   * @param {createjs.DisplayObject} displayObj
+   * @param {number} amount
    */
   protected setSize(displayObj: DisplayObject, amount: number): void {
     const size = displayObj.getBounds();
@@ -323,7 +316,9 @@ export class SliderView extends Container {
     if (!value) return;
     this._base = value;
     this._base.mouseEnabled = true;
-    this._base.addEventListener("click", this.pressBase);
+    this._base.addEventListener("click", (e) =>{
+      this.onPressBase( e as createjs.MouseEvent);
+    });
     this.addChildMe(value);
   }
 
@@ -331,7 +326,7 @@ export class SliderView extends Container {
     return this._base;
   }
 
-  public set bar(value: DisplayObject) {
+  set bar(value: DisplayObject) {
     if (!value) return;
 
     this._bar = value;
@@ -341,7 +336,7 @@ export class SliderView extends Container {
     this.addChildMe(value);
   }
 
-  public set slideButton(value: DisplayObject) {
+  set slideButton(value: DisplayObject) {
     if (!value) return;
 
     this._slideButton = value;
@@ -349,7 +344,7 @@ export class SliderView extends Container {
     this.addChildMe(value);
   }
 
-  public set barMask(value: Shape) {
+  set barMask(value: Shape) {
     if (!value) return;
 
     this._barMask = value;
@@ -358,20 +353,19 @@ export class SliderView extends Container {
     this.addChildMe(value);
   }
 
-  public set minPosition(value: number) {
+  set minPosition(value: number) {
     this._minPosition = value;
   }
 
-  public set maxPosition(value: number) {
+  set maxPosition(value: number) {
     this._maxPosition = value;
   }
 
-  public get rate() {
+  get rate() {
     return this._rate;
   }
 
   /**
-   * オブジェクトの廃棄処理
    * @param	e
    */
   public dispose = (e?: any) => {
