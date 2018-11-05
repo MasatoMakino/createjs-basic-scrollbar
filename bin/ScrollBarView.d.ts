@@ -1,6 +1,7 @@
 /// <reference types="easeljs" />
 import DisplayObject = createjs.DisplayObject;
-import { SliderView, SliderViewInitOption } from "./SliderView";
+import { SliderView } from "./SliderView";
+import { SliderViewOption } from "./SliderViewOption";
 /**
  * スクロールバーを表すクラスです。
  *
@@ -18,12 +19,12 @@ export declare class ScrollBarView extends SliderView {
     protected _targetContents: DisplayObject;
     protected _contentsMask: DisplayObject;
     autoHide: Boolean;
-    constructor(option: SliderViewInitOption, scrollOption: ScrollBarViewInitOption);
+    constructor(option: SliderViewOption, scrollOption: ScrollBarViewInitOption);
     /**
      * 初期化処理
-     * @param {SliderViewInitOption} option
+     * @param {SliderViewOption} option
      */
-    protected init(option: SliderViewInitOption): void;
+    protected init(option: SliderViewOption): void;
     /**
      * スライダーボタンの位置を制限する関数
      * @return 制限で切り落とされたスライダーボタンの座標値
@@ -41,6 +42,10 @@ export declare class ScrollBarView extends SliderView {
      * @return
      */
     protected changePixexToRate(pixel: number): number;
+    /**
+     * スライダーボタンのサイズ。
+     * @returns {number}
+     */
     readonly slideButtonSize: number;
     /**
      * スクロールバーのボタンサイズ及び位置を更新する。
@@ -48,6 +53,9 @@ export declare class ScrollBarView extends SliderView {
      */
     initSliderButtonSize(): void;
     protected initSliderPosition(): void;
+    /**
+     * スライダーボタンのサイズの伸縮を行う。
+     */
     protected updateSlideButtonSize(): void;
     /**
      * autoHideの条件に一致するかを判定する

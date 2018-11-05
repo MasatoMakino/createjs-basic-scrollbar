@@ -1,6 +1,7 @@
 var Container = createjs.Container;
 var Point = createjs.Point;
 import { SliderEvent, SliderEventType } from "./SliderEvent";
+import { SliderViewOption } from "./SliderViewOption";
 /**
  * スライダー用クラスです
  *
@@ -13,7 +14,7 @@ import { SliderEvent, SliderEventType } from "./SliderEvent";
 export class SliderView extends Container {
     /**
      * コンストラクタ
-     * @param {SliderViewInitOption} option
+     * @param {SliderViewOption} option
      */
     constructor(option) {
         super();
@@ -82,7 +83,7 @@ export class SliderView extends Container {
      * 初期化処理
      */
     init(option) {
-        option = SliderViewInitOption.init(option);
+        option = SliderViewOption.init(option);
         this.bar = option.bar;
         this.slideButton = option.button;
         this.barMask = option.mask;
@@ -340,37 +341,3 @@ export class SliderView extends Container {
     }
 }
 SliderView.MAX_RATE = 100.0;
-/**
- * スライダーを初期化する際のオプション
- */
-export class SliderViewInitOption {
-    static init(option) {
-        if (option.rate == null) {
-            option.rate = 0.0;
-        }
-        if (option.isHorizontal == null) {
-            option.isHorizontal = true;
-        }
-        if (option.isReverse == null) {
-            option.isReverse = false;
-        }
-        this.check(option);
-        return option;
-    }
-    static check(option) {
-        const checkBounds = (displayObject) => {
-            if (displayObject) {
-                if (displayObject.getBounds() === null) {
-                    throw new Error("初期化オプションで指定されたShapeにバウンディングボックスが存在しません。Shapeを利用する場合はsetBounds関数を利用してバウンディングボックスを手動で設定してください。");
-                }
-                if (displayObject.parent) {
-                    console.warn("初期化オプションで指定されたパーツがすでに別の親にaddChildされています。SliderViewおよびScrollBarViewの構成パーツはインスタンスにaddChildされることを前提としています。");
-                }
-            }
-        };
-        checkBounds(option.base);
-        checkBounds(option.button);
-        checkBounds(option.mask);
-        checkBounds(option.bar);
-    }
-}

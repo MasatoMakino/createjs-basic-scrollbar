@@ -1,6 +1,7 @@
 import DisplayObject = createjs.DisplayObject;
 import { SliderEvent, SliderEventType } from "./SliderEvent";
-import { SliderView, SliderViewInitOption } from "./SliderView";
+import { SliderView } from "./SliderView";
+import { SliderViewOption } from "./SliderViewOption";
 
 /**
  * スクロールバーを表すクラスです。
@@ -21,10 +22,7 @@ export class ScrollBarView extends SliderView {
   protected _contentsMask: DisplayObject;
   public autoHide: Boolean = false;
 
-  constructor(
-    option: SliderViewInitOption,
-    scrollOption: ScrollBarViewInitOption
-  ) {
+  constructor(option: SliderViewOption, scrollOption: ScrollBarViewInitOption) {
     super(option);
 
     ScrollBarViewInitOption.check(scrollOption);
@@ -36,9 +34,9 @@ export class ScrollBarView extends SliderView {
 
   /**
    * 初期化処理
-   * @param {SliderViewInitOption} option
+   * @param {SliderViewOption} option
    */
-  protected init(option: SliderViewInitOption): void {
+  protected init(option: SliderViewOption): void {
     super.init(option);
     this.initSliderButtonSize();
   }

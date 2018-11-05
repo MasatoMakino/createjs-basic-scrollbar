@@ -3,6 +3,7 @@ import DisplayObject = createjs.DisplayObject;
 import Point = createjs.Point;
 import Shape = createjs.Shape;
 import { SliderEvent, SliderEventType } from "./SliderEvent";
+import { SliderViewOption } from "./SliderViewOption";
 
 /**
  * スライダー用クラスです
@@ -34,9 +35,9 @@ export class SliderView extends Container {
 
   /**
    * コンストラクタ
-   * @param {SliderViewInitOption} option
+   * @param {SliderViewOption} option
    */
-  constructor(option: SliderViewInitOption) {
+  constructor(option: SliderViewOption) {
     super();
     this.addEventListener("removed", this.dispose);
     this.init(option);
@@ -45,8 +46,8 @@ export class SliderView extends Container {
   /**
    * 初期化処理
    */
-  protected init(option: SliderViewInitOption): void {
-    option = SliderViewInitOption.init(option);
+  protected init(option: SliderViewOption): void {
+    option = SliderViewOption.init(option);
 
     this.bar = option.bar;
     this.slideButton = option.button;
@@ -391,58 +392,5 @@ export class SliderView extends Container {
     this._bar = null;
     this._barMask = null;
     this._slideButton = null;
-  }
-}
-
-/**
- * スライダーを初期化する際のオプション
- */
-export class SliderViewInitOption {
-  minPosition: number; //スライダーボタンの座標の最小値
-  maxPosition: number; //スライダーボタンの座標の最大値
-  rate?: number;
-  base: DisplayObject; //スライダーの地
-  button: DisplayObject; //スライドボタン
-  mask?: Shape; //バーのマスク 既定値 null
-  bar?: DisplayObject; //スライドにあわせて表示されるバー 既定値 null
-  isHorizontal?: boolean; //水平スクロールか否か 既定値 true
-  isReverse?: boolean; //反転スクロールか否か 既定値 false
-
-  public static init(option: SliderViewInitOption): SliderViewInitOption {
-    if (option.rate == null) {
-      option.rate = 0.0;
-    }
-    if (option.isHorizontal == null) {
-      option.isHorizontal = true;
-    }
-    if (option.isReverse == null) {
-      option.isReverse = false;
-    }
-
-    this.check(option);
-    return option;
-  }
-
-  protected static check(option: SliderViewInitOption): void {
-    const checkBounds = (displayObject?: DisplayObject) => {
-      if (displayObject) {
-        if (displayObject.getBounds() === null) {
-          throw new Error(
-            "初期化オプションで指定されたShapeにバウンディングボックスが存在しません。Shapeを利用する場合はsetBounds関数を利用してバウンディングボックスを手動で設定してください。"
-          );
-        }
-
-        if (displayObject.parent) {
-          console.warn(
-            "初期化オプションで指定されたパーツがすでに別の親にaddChildされています。SliderViewおよびScrollBarViewの構成パーツはインスタンスにaddChildされることを前提としています。"
-          );
-        }
-      }
-    };
-
-    checkBounds(option.base);
-    checkBounds(option.button);
-    checkBounds(option.mask);
-    checkBounds(option.bar);
   }
 }

@@ -32,7 +32,7 @@ export class ScrollBarView extends SliderView {
     }
     /**
      * 初期化処理
-     * @param {SliderViewInitOption} option
+     * @param {SliderViewOption} option
      */
     init(option) {
         super.init(option);
@@ -49,9 +49,6 @@ export class ScrollBarView extends SliderView {
         mousePos = Math.max(this._minPosition + sliderSize / 2, mousePos);
         return mousePos;
     }
-    ///////////////////////////
-    //	ピクセル位置 <-> 割合の相互変換
-    ///////////////////////////
     /**
      * スライダーの割合から、スライダーの位置を取得する
      * @param	rate
@@ -80,9 +77,10 @@ export class ScrollBarView extends SliderView {
         currentRate = Math.min(currentRate, SliderView.MAX_RATE);
         return currentRate;
     }
-    ///////////////////////////
-    //	スライドバーのサイズ更新
-    ///////////////////////////
+    /**
+     * スライダーボタンのサイズ。
+     * @returns {number}
+     */
     get slideButtonSize() {
         this.updateSlideButtonSize();
         return this.getSize(this._slideButton);
@@ -108,6 +106,9 @@ export class ScrollBarView extends SliderView {
         let sizeDif = this.getSize(this._targetContents) - this.getSize(this._contentsMask);
         this.changeRate((posDif / sizeDif) * SliderView.MAX_RATE);
     }
+    /**
+     * スライダーボタンのサイズの伸縮を行う。
+     */
     updateSlideButtonSize() {
         if (!this._targetContents || !this._contentsMask || !this._slideButton) {
             return;
@@ -122,8 +123,6 @@ export class ScrollBarView extends SliderView {
         this.setSize(this._slideButton, sliderSize);
         //autoHideの条件に一致するかを判定し、表示を切り替える。
         this._slideButton.visible = this._slideButton.mouseEnabled = !this.isHide;
-        // buttonMode = useHandCursor = !isHide;
-        // _slideButton.buttonMode = this._slideButton.useHandCursor = !isHide;
     }
     /**
      * autoHideの条件に一致するかを判定する
@@ -158,9 +157,6 @@ export class ScrollBarView extends SliderView {
             return;
         super.onPressBaseFunction(evt);
     }
-    ///////////////////////////
-    //	getter / setter
-    ///////////////////////////
     get targetContents() {
         return this._targetContents;
     }
@@ -189,7 +185,7 @@ export class ScrollBarView extends SliderView {
 export class ScrollBarViewInitOption {
     static check(option) {
         if (option.contentsMask.parent != option.contentsMask.parent) {
-            console.warn("ScrollBarView : スクロールするコンテンツと、そのマスクは同一の親を持っている必要があります。", option.targetContents, option.contentsMask);
+            console.warn("ScrollBarView : スクロールするコンテンツと、そのマスクは表示ツリー上で同一の親Containerを持っている必要があります。", option.targetContents, option.contentsMask);
         }
     }
 }

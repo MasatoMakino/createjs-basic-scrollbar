@@ -3,6 +3,7 @@ import Container = createjs.Container;
 import DisplayObject = createjs.DisplayObject;
 import Shape = createjs.Shape;
 import { SliderEventType } from "./SliderEvent";
+import { SliderViewOption } from "./SliderViewOption";
 /**
  * スライダー用クラスです
  *
@@ -27,13 +28,13 @@ export declare class SliderView extends Container {
     isReverse: Boolean;
     /**
      * コンストラクタ
-     * @param {SliderViewInitOption} option
+     * @param {SliderViewOption} option
      */
-    constructor(option: SliderViewInitOption);
+    constructor(option: SliderViewOption);
     /**
      * 初期化処理
      */
-    protected init(option: SliderViewInitOption): void;
+    protected init(option: SliderViewOption): void;
     /**
      * パーツの重なり順を適正化する。
      */
@@ -143,21 +144,5 @@ export declare class SliderView extends Container {
      */
     dispose: (e?: any) => void;
     protected onDisposeFunction(e?: Event): void;
-}
-/**
- * スライダーを初期化する際のオプション
- */
-export declare class SliderViewInitOption {
-    minPosition: number;
-    maxPosition: number;
-    rate?: number;
-    base: DisplayObject;
-    button: DisplayObject;
-    mask?: Shape;
-    bar?: DisplayObject;
-    isHorizontal?: boolean;
-    isReverse?: boolean;
-    static init(option: SliderViewInitOption): SliderViewInitOption;
-    protected static check(option: SliderViewInitOption): void;
 }
 //# sourceMappingURL=SliderView.d.ts.map
