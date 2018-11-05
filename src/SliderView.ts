@@ -102,7 +102,7 @@ export class SliderView extends Container {
    * changeRate関数の内部関数
    */
   private updateSliderPositions(): void {
-    const pos: number = this.changeRateToPixcel(this._rate);
+    const pos: number = this.changeRateToPixel(this._rate);
     //各MCの位置、幅を調整
     this.updateParts(pos);
   }
@@ -117,7 +117,7 @@ export class SliderView extends Container {
     this.isDragging = true;
     const target: DisplayObject = evt.currentTarget as DisplayObject;
 
-    let localPos = this.globalToLocal(evt.stageX, evt.stageY);
+    const localPos = this.globalToLocal(evt.stageX, evt.stageY);
     this.dragStartPos = new Point(localPos.x - target.x, localPos.y - target.y);
 
     this.stage.addEventListener("pressmove", this.moveSlider);
@@ -130,11 +130,11 @@ export class SliderView extends Container {
    */
   private moveSlider = (e: any) => {
     const evt = e as createjs.MouseEvent;
-    let mousePos: number = this.limitSliderButtonPosition(evt);
+    const mousePos: number = this.limitSliderButtonPosition(evt);
 
     this.updateParts(mousePos);
 
-    this._rate = this.changePixexToRate(mousePos);
+    this._rate = this.changePixelToRate(mousePos);
     this.dispatchSliderEvent(SliderEventType.CHANGE);
   };
 
@@ -203,7 +203,7 @@ export class SliderView extends Container {
    * @param	rate
    * @return
    */
-  protected changeRateToPixcel(rate: number): number {
+  protected changeRateToPixel(rate: number): number {
     let currentPix: number =
       ((this._maxPosition - this._minPosition) * rate) / SliderView.MAX_RATE +
       this._minPosition;
@@ -217,11 +217,11 @@ export class SliderView extends Container {
   }
 
   /**
-   * スライダーのX座標から、スライダーの割合を取得する
+   * スライダーの座標から、スライダーの割合を取得する
    * @param	pixel
    * @return
    */
-  protected changePixexToRate(pixel: number): number {
+  protected changePixelToRate(pixel: number): number {
     let currentRate: number =
       ((pixel - this._minPosition) / (this._maxPosition - this._minPosition)) *
       SliderView.MAX_RATE;
@@ -253,6 +253,9 @@ export class SliderView extends Container {
    * @param	position
    */
   protected setPosition(displayObj: DisplayObject, position: number): void {
+
+    if( !displayObj ) return;
+
     if (this.isHorizontal) {
       displayObj.x = position;
     } else {
@@ -270,7 +273,7 @@ export class SliderView extends Container {
     displayObj: DisplayObject,
     evt: createjs.MouseEvent
   ): number {
-    let localPos = displayObj.globalToLocal(evt.stageX, evt.stageY);
+    const localPos = displayObj.globalToLocal(evt.stageX, evt.stageY);
 
     if (this.isHorizontal) {
       return localPos.x - this.dragStartPos.x;
@@ -308,8 +311,10 @@ export class SliderView extends Container {
     }
   }
 
+
   set base(value: DisplayObject) {
     if (!value) return;
+
     this._base = value;
     this._base.mouseEnabled = true;
     this._base.addEventListener("click", e => {
@@ -328,7 +333,6 @@ export class SliderView extends Container {
     this._bar = value;
     if (this._barMask) this._bar.mask = this._barMask;
     this._bar.mouseEnabled = false;
-    // this._bar.mouseChildren = false;
     this.addChildMe(value);
   }
 

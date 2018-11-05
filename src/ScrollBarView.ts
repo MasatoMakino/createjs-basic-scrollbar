@@ -59,7 +59,7 @@ export class ScrollBarView extends SliderView {
    * @param	rate
    * @return
    */
-  protected changeRateToPixcel(rate: number): number {
+  protected changeRateToPixel(rate: number): number {
     let buttonSize: number = this.slideButtonSize;
     let currentMax: number = this._maxPosition - buttonSize / 2;
     let currentMin: number = this._minPosition + buttonSize / 2;
@@ -76,7 +76,7 @@ export class ScrollBarView extends SliderView {
    * @param	pixel
    * @return
    */
-  protected changePixexToRate(pixel: number): number {
+  protected changePixelToRate(pixel: number): number {
     let buttonSize: number = this.slideButtonSize;
     let currentMax: number = this._maxPosition - buttonSize / 2;
     let currentMin: number = this._minPosition + buttonSize / 2;
