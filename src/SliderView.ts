@@ -28,7 +28,15 @@ export class SliderView extends Container {
 
   protected dragStartPos: createjs.Point = new createjs.Point();
 
-  protected _rate: number; // 現在のスライダーの位置の割合 MIN 0.0 ~ MAX 100.0
+  /**
+   * 現在のスライダーの位置の割合。
+   * MIN 0.0 ~ SliderView.MAX_RATE。
+   *
+   * この変数はスライダーの内部処理のために利用され、isReverseフラグとは関係がなく左上を原点とする値で保存される。
+   * get rateおよびset rate関数を通すタイミングで、isReverseフラグに応じて数値が反転する。
+   */
+  private _rate: number;
+
   public static readonly MAX_RATE: number = 100.0;
 
   protected isDragging: Boolean = false; // 現在スライド中か否か
@@ -82,14 +90,13 @@ export class SliderView extends Container {
    * @param	rate	スライダーの位置 MIN 0.0 ~ MAX 100.0
    */
   public changeRate(rate: number): void {
+    //ドラッグ中は外部からの操作を無視する。
     if (this.isDragging) return;
 
     if (!this.isReverse) this._rate = rate;
     else this._rate = SliderView.MAX_RATE - rate;
 
     this.updateSliderPositions();
-
-    //イベントを発行
     this.dispatchSliderEvent(SliderEventType.CHANGE);
   }
 
@@ -170,13 +177,8 @@ export class SliderView extends Container {
    * @param {SliderEventType} type
    */
   protected dispatchSliderEvent(type: SliderEventType): void {
-    let currentRate: number = this._rate;
-    if (this.isReverse) currentRate = SliderView.MAX_RATE - this._rate;
-
-    let sliderEvent: SliderEvent = new SliderEvent(type);
-
-    sliderEvent.rate = currentRate;
-    this.dispatchEvent(sliderEvent);
+    const e: SliderEvent = new SliderEvent(type, this.rate);
+    this.dispatchEvent(e);
   }
 
   /**
@@ -361,7 +363,9 @@ export class SliderView extends Container {
   }
 
   get rate() {
-    return this._rate;
+    let rate: number = this._rate;
+    if (this.isReverse) rate = SliderView.MAX_RATE - this._rate;
+    return rate;
   }
 
   /**

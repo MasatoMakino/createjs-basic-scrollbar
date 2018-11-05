@@ -7,19 +7,21 @@ export class SliderEvent extends createjs.Event {
 
   constructor(
     type: SliderEventType,
+    rate: number,
     bubbles: boolean = false,
     cancelable: boolean = false
   ) {
     super(type as string, bubbles, cancelable);
+    this.rate = rate;
   }
 
   public clone(): createjs.Event {
-    let evt = new SliderEvent(
+    const evt = new SliderEvent(
       this.type as SliderEventType,
+      this.rate,
       this.bubbles,
       this.cancelable
     );
-    evt.rate = this.rate;
     return evt as createjs.Event;
   }
 }
