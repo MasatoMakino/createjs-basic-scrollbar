@@ -92,7 +92,7 @@ export class SliderView extends Container {
     this.updateSliderPositions();
 
     //イベントを発行
-    this.dispathSliderEvent(SliderEventType.CHANGE);
+    this.dispatchSliderEvent(SliderEventType.CHANGE);
   }
   /**
    * スライダーの位置を調整する。
@@ -137,7 +137,7 @@ export class SliderView extends Container {
     this._rate = this.changePixexToRate(mousePos);
 
     //イベントを発行
-    this.dispathSliderEvent(SliderEventType.CHANGE);
+    this.dispatchSliderEvent(SliderEventType.CHANGE);
   };
 
   /**
@@ -174,7 +174,7 @@ export class SliderView extends Container {
    * スライダーの変更に関するイベントを発行する
    * @param	type
    */
-  protected dispathSliderEvent(type: SliderEventType): void {
+  protected dispatchSliderEvent(type: SliderEventType): void {
     let sliderEvent: SliderEvent = new SliderEvent(type);
     let currentRate: number = this._rate;
     if (this.isReverse) currentRate = SliderView.MAX_RATE - this._rate;
@@ -191,7 +191,7 @@ export class SliderView extends Container {
     this.isDragging = false;
     this.stage.removeEventListener("pressmove", this.moveSlider);
     this.stage.removeEventListener("pressup", this.moveSliderFinish);
-    this.dispathSliderEvent(SliderEventType.CHANGE_FINISH);
+    this.dispatchSliderEvent(SliderEventType.CHANGE_FINISH);
   };
 
   /**
@@ -206,7 +206,7 @@ export class SliderView extends Container {
   protected onPressBaseFunction(evt: createjs.MouseEvent): void {
     this.dragStartPos = new Point();
     this.moveSlider(evt);
-    this.dispathSliderEvent(SliderEventType.CHANGE_FINISH);
+    this.dispatchSliderEvent(SliderEventType.CHANGE_FINISH);
   }
 
   /**
