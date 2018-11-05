@@ -13,7 +13,6 @@ export class SliderViewOption {
   mask?: Shape; //バーのマスク
   bar?: DisplayObject; //スライドにあわせて表示されるバー
   isHorizontal?: boolean; //水平スクロールか否か 既定値 true
-  isReverse?: boolean; //反転スクロールか否か 既定値 false
 
   public static init(option: SliderViewOption): SliderViewOption {
     if (option.rate == null) {
@@ -21,9 +20,6 @@ export class SliderViewOption {
     }
     if (option.isHorizontal == null) {
       option.isHorizontal = true;
-    }
-    if (option.isReverse == null) {
-      option.isReverse = false;
     }
 
     this.check(option);

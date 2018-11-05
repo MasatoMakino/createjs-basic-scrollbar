@@ -24,7 +24,7 @@ export class SliderView extends Container {
   protected _minPosition: number; // スライダーボタンの座標の最小値
   protected _maxPosition: number; // スライダーボタンの座標の最大値
   protected isHorizontal: Boolean = true;
-  protected isReverse: Boolean = false;
+  // protected isReverse: Boolean = false;
 
   protected dragStartPos: createjs.Point = new createjs.Point();
 
@@ -63,7 +63,6 @@ export class SliderView extends Container {
     this._minPosition = option.minPosition;
     this._maxPosition = option.maxPosition;
     this.isHorizontal = option.isHorizontal;
-    this.isReverse = option.isReverse;
     this._rate = option.rate;
 
     this.swapBaseChildren();
@@ -93,9 +92,7 @@ export class SliderView extends Container {
     //ドラッグ中は外部からの操作を無視する。
     if (this.isDragging) return;
 
-    if (!this.isReverse) this._rate = rate;
-    else this._rate = SliderView.MAX_RATE - rate;
-
+    this._rate = rate;
     this.updateSliderPositions();
     this.dispatchSliderEvent(SliderEventType.CHANGE);
   }
@@ -163,13 +160,11 @@ export class SliderView extends Container {
     if (this._bar && !this._barMask)
       this.setSize(this._bar, Math.max(2.0, mousePos - this._minPosition));
     if (this._barMask) {
-      if (!this.isReverse)
-        this.setSize(this._barMask, mousePos - this.getPosition(this._barMask));
-      else
-        this.setSize(this._barMask, this.getPosition(this._barMask) - mousePos);
+      this.setSize(this._barMask, mousePos - this.getPosition(this._barMask));
     }
-
-    if (this._slideButton) this.setPosition(this._slideButton, mousePos);
+    if (this._slideButton) {
+      this.setPosition(this._slideButton, mousePos);
+    }
   }
 
   /**
@@ -363,9 +358,7 @@ export class SliderView extends Container {
   }
 
   get rate() {
-    let rate: number = this._rate;
-    if (this.isReverse) rate = SliderView.MAX_RATE - this._rate;
-    return rate;
+    return this._rate;
   }
 
   /**

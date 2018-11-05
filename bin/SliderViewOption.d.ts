@@ -13,7 +13,6 @@ export declare class SliderViewOption {
     mask?: Shape;
     bar?: DisplayObject;
     isHorizontal?: boolean;
-    isReverse?: boolean;
     static init(option: SliderViewOption): SliderViewOption;
     protected static check(option: SliderViewOption): void;
     private static checkParts;

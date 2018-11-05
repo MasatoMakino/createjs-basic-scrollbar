@@ -3,12 +3,12 @@
  * 現状のスライダー位置を報告します。
  */
 export class SliderEvent extends createjs.Event {
-    constructor(type, bubbles = false, cancelable = false) {
+    constructor(type, rate, bubbles = false, cancelable = false) {
         super(type, bubbles, cancelable);
+        this.rate = rate;
     }
     clone() {
-        let evt = new SliderEvent(this.type, this.bubbles, this.cancelable);
-        evt.rate = this.rate;
+        const evt = new SliderEvent(this.type, this.rate, this.bubbles, this.cancelable);
         return evt;
     }
 }

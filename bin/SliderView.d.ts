@@ -20,12 +20,18 @@ export declare class SliderView extends Container {
     protected _slideButton: DisplayObject;
     protected _minPosition: number;
     protected _maxPosition: number;
+    protected isHorizontal: Boolean;
     protected dragStartPos: createjs.Point;
-    protected _rate: number;
+    /**
+     * 現在のスライダーの位置の割合。
+     * MIN 0.0 ~ SliderView.MAX_RATE。
+     *
+     * この変数はスライダーの内部処理のために利用され、isReverseフラグとは関係がなく左上を原点とする値で保存される。
+     * get rateおよびset rate関数を通すタイミングで、isReverseフラグに応じて数値が反転する。
+     */
+    private _rate;
     static readonly MAX_RATE: number;
     protected isDragging: Boolean;
-    isHorizontal: Boolean;
-    isReverse: Boolean;
     /**
      * コンストラクタ
      * @param {SliderViewOption} option
@@ -73,21 +79,20 @@ export declare class SliderView extends Container {
     private updateParts;
     /**
      * スライダーの変更に関するイベントを発行する
-     * @param	type
+     * @param {SliderEventType} type
      */
-    protected dispathSliderEvent(type: SliderEventType): void;
+    protected dispatchSliderEvent(type: SliderEventType): void;
     /**
      * スライダーのドラッグ終了時の処理
      * @param	evt
      */
     protected moveSliderFinish: (e: Object) => void;
     /**
-     * スライダーの地をクリックしたときの処理
+     * スライダーの地をクリックした際の処理
      * その位置までスライダーをジャンプする
-     * @param	evt
+     * @param {createjs.MouseEvent} evt
      */
-    protected pressBase: (evt: Object) => void;
-    protected onPressBaseFunction(evt: createjs.MouseEvent): void;
+    protected onPressBase(evt: createjs.MouseEvent): void;
     /**
      * スライダーの割合から、スライダーの位置を取得する
      * @param	rate
@@ -127,8 +132,8 @@ export declare class SliderView extends Container {
     protected getSize(displayObj: DisplayObject): number;
     /**
      * スクロール方向の高さ、もしくは幅を設定する
-     * @param	displayObj
-     * @return
+     * @param {createjs.DisplayObject} displayObj
+     * @param {number} amount
      */
     protected setSize(displayObj: DisplayObject, amount: number): void;
     base: DisplayObject;
@@ -139,10 +144,14 @@ export declare class SliderView extends Container {
     maxPosition: number;
     readonly rate: number;
     /**
-     * オブジェクトの廃棄処理
+     * このインスタンスを破棄する。
      * @param	e
      */
     dispose: (e?: any) => void;
+    /**
+     * 全てのDisplayObjectとEventListenerを解除する。
+     * @param {Event} e
+     */
     protected onDisposeFunction(e?: Event): void;
 }
 //# sourceMappingURL=SliderView.d.ts.map

@@ -5,7 +5,7 @@
  */
 export declare class SliderEvent extends createjs.Event {
     rate: number;
-    constructor(type: SliderEventType, bubbles?: boolean, cancelable?: boolean);
+    constructor(type: SliderEventType, rate: number, bubbles?: boolean, cancelable?: boolean);
     clone(): createjs.Event;
 }
 export declare enum SliderEventType {

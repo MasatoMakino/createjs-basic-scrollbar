@@ -6,9 +6,6 @@ export class SliderViewOption {
         if (option.isHorizontal == null) {
             option.isHorizontal = true;
         }
-        if (option.isReverse == null) {
-            option.isReverse = false;
-        }
         this.check(option);
         return option;
     }

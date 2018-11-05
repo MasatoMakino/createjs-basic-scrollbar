@@ -71,7 +71,7 @@ export declare class ScrollBarView extends SliderView {
      * @param {number} rate
      */
     protected updateContentsPositionWithRate(rate: number): void;
-    protected onPressBaseFunction(evt: createjs.MouseEvent): void;
+    protected onPressBase(evt: createjs.MouseEvent): void;
     readonly targetContents: DisplayObject;
     protected setTargetContents(value: DisplayObject): void;
     readonly contentsMask: DisplayObject;

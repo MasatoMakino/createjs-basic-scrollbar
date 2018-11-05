@@ -18,10 +18,10 @@ export class SliderView extends Container {
      */
     constructor(option) {
         super();
+        this.isHorizontal = true;
+        // protected isReverse: Boolean = false;
         this.dragStartPos = new createjs.Point();
         this.isDragging = false; // 現在スライド中か否か
-        this.isHorizontal = true;
-        this.isReverse = false;
         /**
          * スライダーのドラッグを開始する
          * @param	evt
@@ -41,42 +41,28 @@ export class SliderView extends Container {
          */
         this.moveSlider = (e) => {
             const evt = e;
-            //現在のスライダー位置を算出
             let mousePos = this.limitSliderButtonPosition(evt);
-            //各MCの位置、幅を調整
             this.updateParts(mousePos);
-            //レートに反映
             this._rate = this.changePixexToRate(mousePos);
-            //イベントを発行
-            this.dispathSliderEvent(SliderEventType.CHANGE);
+            this.dispatchSliderEvent(SliderEventType.CHANGE);
         };
         /**
          * スライダーのドラッグ終了時の処理
          * @param	evt
          */
         this.moveSliderFinish = (e) => {
-            const evt = e;
             this.isDragging = false;
             this.stage.removeEventListener("pressmove", this.moveSlider);
             this.stage.removeEventListener("pressup", this.moveSliderFinish);
-            this.dispathSliderEvent(SliderEventType.CHANGE_FINISH);
+            this.dispatchSliderEvent(SliderEventType.CHANGE_FINISH);
         };
         /**
-         * スライダーの地をクリックしたときの処理
-         * その位置までスライダーをジャンプする
-         * @param	evt
-         */
-        this.pressBase = (evt) => {
-            this.onPressBaseFunction(evt);
-        };
-        /**
-         * オブジェクトの廃棄処理
+         * このインスタンスを破棄する。
          * @param	e
          */
         this.dispose = (e) => {
             this.onDisposeFunction(e);
         };
-        this.addEventListener("removed", this.dispose);
         this.init(option);
     }
     /**
@@ -91,7 +77,6 @@ export class SliderView extends Container {
         this._minPosition = option.minPosition;
         this._maxPosition = option.maxPosition;
         this.isHorizontal = option.isHorizontal;
-        this.isReverse = option.isReverse;
         this._rate = option.rate;
         this.swapBaseChildren();
         this.changeRate(this._rate);
@@ -105,26 +90,23 @@ export class SliderView extends Container {
         this.addChildMe(this._slideButton);
     }
     addChildMe(obj) {
-        if (obj) {
-            if (obj.parent)
-                obj.parent.removeChild(obj);
-            this.addChild(obj);
-        }
+        if (!obj)
+            return;
+        if (obj.parent)
+            obj.parent.removeChild(obj);
+        this.addChild(obj);
     }
     /**
      * スライダーの位置を変更する
      * @param	rate	スライダーの位置 MIN 0.0 ~ MAX 100.0
      */
     changeRate(rate) {
+        //ドラッグ中は外部からの操作を無視する。
         if (this.isDragging)
             return;
-        if (!this.isReverse)
-            this._rate = rate;
-        else
-            this._rate = SliderView.MAX_RATE - rate;
+        this._rate = rate;
         this.updateSliderPositions();
-        //イベントを発行
-        this.dispathSliderEvent(SliderEventType.CHANGE);
+        this.dispatchSliderEvent(SliderEventType.CHANGE);
     }
     /**
      * スライダーの位置を調整する。
@@ -156,30 +138,29 @@ export class SliderView extends Container {
         if (this._bar && !this._barMask)
             this.setSize(this._bar, Math.max(2.0, mousePos - this._minPosition));
         if (this._barMask) {
-            if (!this.isReverse)
-                this.setSize(this._barMask, mousePos - this.getPosition(this._barMask));
-            else
-                this.setSize(this._barMask, this.getPosition(this._barMask) - mousePos);
+            this.setSize(this._barMask, mousePos - this.getPosition(this._barMask));
         }
-        if (this._slideButton)
+        if (this._slideButton) {
             this.setPosition(this._slideButton, mousePos);
+        }
     }
     /**
      * スライダーの変更に関するイベントを発行する
-     * @param	type
+     * @param {SliderEventType} type
      */
-    dispathSliderEvent(type) {
-        let sliderEvent = new SliderEvent(type);
-        let currentRate = this._rate;
-        if (this.isReverse)
-            currentRate = SliderView.MAX_RATE - this._rate;
-        sliderEvent.rate = currentRate;
-        this.dispatchEvent(sliderEvent);
+    dispatchSliderEvent(type) {
+        const e = new SliderEvent(type, this.rate);
+        this.dispatchEvent(e);
     }
-    onPressBaseFunction(evt) {
+    /**
+     * スライダーの地をクリックした際の処理
+     * その位置までスライダーをジャンプする
+     * @param {createjs.MouseEvent} evt
+     */
+    onPressBase(evt) {
         this.dragStartPos = new Point();
         this.moveSlider(evt);
-        this.dispathSliderEvent(SliderEventType.CHANGE_FINISH);
+        this.dispatchSliderEvent(SliderEventType.CHANGE_FINISH);
     }
     /**
      * スライダーの割合から、スライダーの位置を取得する
@@ -269,8 +250,8 @@ export class SliderView extends Container {
     }
     /**
      * スクロール方向の高さ、もしくは幅を設定する
-     * @param	displayObj
-     * @return
+     * @param {createjs.DisplayObject} displayObj
+     * @param {number} amount
      */
     setSize(displayObj, amount) {
         const size = displayObj.getBounds();
@@ -281,15 +262,14 @@ export class SliderView extends Container {
             displayObj.scaleY = amount / size.height;
         }
     }
-    ///////////////////////////
-    //	getter / setter
-    ///////////////////////////
     set base(value) {
         if (!value)
             return;
         this._base = value;
         this._base.mouseEnabled = true;
-        this._base.addEventListener("click", this.pressBase);
+        this._base.addEventListener("click", e => {
+            this.onPressBase(e);
+        });
         this.addChildMe(value);
     }
     get base() {
@@ -330,14 +310,15 @@ export class SliderView extends Container {
     get rate() {
         return this._rate;
     }
+    /**
+     * 全てのDisplayObjectとEventListenerを解除する。
+     * @param {Event} e
+     */
     onDisposeFunction(e) {
-        this.removeEventListener("removed", this.dispose);
-        this._base.removeEventListener("click", this.pressBase);
-        this._slideButton.removeEventListener("mousedown", this.startMove);
-        this._base = null;
-        this._bar = null;
-        this._barMask = null;
-        this._slideButton = null;
+        this.removeAllEventListeners();
+        this._base.removeAllEventListeners();
+        this._slideButton.removeAllEventListeners();
+        this.removeAllChildren();
     }
 }
 SliderView.MAX_RATE = 100.0;

@@ -152,10 +152,10 @@ export class ScrollBarView extends SliderView {
                 (this.getSize(this._targetContents) - this.getSize(this._contentsMask));
         this.setPosition(this._targetContents, nextPos);
     }
-    onPressBaseFunction(evt) {
+    onPressBase(evt) {
         if (this.isHide)
             return;
-        super.onPressBaseFunction(evt);
+        super.onPressBase(evt);
     }
     get targetContents() {
         return this._targetContents;
