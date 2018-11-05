@@ -39,7 +39,6 @@ export class SliderView extends Container {
    */
   constructor(option: SliderViewOption) {
     super();
-    this.addEventListener("removed", this.dispose);
     this.init(option);
   }
 
@@ -73,10 +72,9 @@ export class SliderView extends Container {
   }
 
   private addChildMe(obj: DisplayObject): void {
-    if (obj) {
-      if (obj.parent) obj.parent.removeChild(obj);
-      this.addChild(obj);
-    }
+    if (!obj) return;
+    if (obj.parent) obj.parent.removeChild(obj);
+    this.addChild(obj);
   }
 
   /**
@@ -136,7 +134,6 @@ export class SliderView extends Container {
     //レートに反映
     this._rate = this.changePixexToRate(mousePos);
 
-    //イベントを発行
     this.dispatchSliderEvent(SliderEventType.CHANGE);
   };
 
@@ -167,6 +164,7 @@ export class SliderView extends Container {
       else
         this.setSize(this._barMask, this.getPosition(this._barMask) - mousePos);
     }
+
     if (this._slideButton) this.setPosition(this._slideButton, mousePos);
   }
 
@@ -175,9 +173,11 @@ export class SliderView extends Container {
    * @param	type
    */
   protected dispatchSliderEvent(type: SliderEventType): void {
-    let sliderEvent: SliderEvent = new SliderEvent(type);
     let currentRate: number = this._rate;
     if (this.isReverse) currentRate = SliderView.MAX_RATE - this._rate;
+
+    let sliderEvent: SliderEvent = new SliderEvent(type);
+
     sliderEvent.rate = currentRate;
     this.dispatchEvent(sliderEvent);
   }
@@ -194,15 +194,15 @@ export class SliderView extends Container {
     this.dispatchSliderEvent(SliderEventType.CHANGE_FINISH);
   };
 
-  /**
-   * スライダーの地をクリックしたときの処理
-   * その位置までスライダーをジャンプする
-   * @param	evt
-   */
   protected pressBase = (evt: Object) => {
     this.onPressBaseFunction(evt as createjs.MouseEvent);
   };
 
+  /**
+   * スライダーの地をクリックした際の処理
+   * その位置までスライダーをジャンプする
+   * @param {createjs.MouseEvent} evt
+   */
   protected onPressBaseFunction(evt: createjs.MouseEvent): void {
     this.dragStartPos = new Point();
     this.moveSlider(evt);
@@ -319,11 +319,7 @@ export class SliderView extends Container {
     }
   }
 
-  ///////////////////////////
-  //	getter / setter
-  ///////////////////////////
-
-  public set base(value: DisplayObject) {
+  set base(value: DisplayObject) {
     if (!value) return;
     this._base = value;
     this._base.mouseEnabled = true;
@@ -331,7 +327,7 @@ export class SliderView extends Container {
     this.addChildMe(value);
   }
 
-  public get base(): DisplayObject {
+  get base(): DisplayObject {
     return this._base;
   }
 
@@ -382,15 +378,14 @@ export class SliderView extends Container {
     this.onDisposeFunction(e as Event);
   };
 
+  /**
+   * 全てのDisplayObjectとEventListenerを解除する。
+   * @param {Event} e
+   */
   protected onDisposeFunction(e?: Event): void {
-    this.removeEventListener("removed", this.dispose);
-
-    this._base.removeEventListener("click", this.pressBase);
-    this._slideButton.removeEventListener("mousedown", this.startMove);
-
-    this._base = null;
-    this._bar = null;
-    this._barMask = null;
-    this._slideButton = null;
+    this.removeAllEventListeners();
+    this._base.removeAllEventListeners();
+    this._slideButton.removeAllEventListeners();
+    this.removeAllChildren();
   }
 }
