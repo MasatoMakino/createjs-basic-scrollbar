@@ -18,7 +18,7 @@ export declare class SliderView extends Container {
     protected _slideButton: DisplayObject;
     protected _minPosition: number;
     protected _maxPosition: number;
-    protected isHorizontal: Boolean;
+    protected isHorizontal: boolean;
     protected dragStartPos: createjs.Point;
     /**
      * 現在のスライダーの位置の割合。
@@ -26,7 +26,7 @@ export declare class SliderView extends Container {
      */
     private _rate;
     static readonly MAX_RATE: number;
-    protected isDragging: Boolean;
+    private isDragging;
     /**
      * @param {SliderViewOption} option
      */
@@ -117,11 +117,9 @@ export declare class SliderView extends Container {
      * @param {number} amount
      */
     protected setSize(displayObj: DisplayObject, amount: number): void;
-    base: DisplayObject;
+    private base;
     private initBarAndMask;
-    slideButton: DisplayObject;
-    minPosition: number;
-    maxPosition: number;
+    private slideButton;
     readonly rate: number;
     /**
      * このインスタンスを破棄する。

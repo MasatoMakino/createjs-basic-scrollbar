@@ -22,7 +22,7 @@ export class SliderView extends Container {
 
   protected _minPosition: number; // スライダーボタンの座標の最小値
   protected _maxPosition: number; // スライダーボタンの座標の最大値
-  protected isHorizontal: Boolean = true;
+  protected isHorizontal: boolean = true;
 
   protected dragStartPos: createjs.Point = new createjs.Point();
   /**
@@ -31,7 +31,7 @@ export class SliderView extends Container {
    */
   private _rate: number;
   public static readonly MAX_RATE: number = 100.0;
-  protected isDragging: Boolean = false; // 現在スライド中か否か
+  private isDragging: Boolean = false; // 現在スライド中か否か
 
   /**
    * @param {SliderViewOption} option
@@ -49,11 +49,9 @@ export class SliderView extends Container {
     option = SliderViewOption.init(option);
 
     this.base = option.base;
-    this._bar = option.bar;
-    this.initBarAndMask(this._bar);
+    this._bar = this.initBarAndMask(option.bar);
     this.slideButton = option.button;
-    this._barMask = option.mask;
-    this.initBarAndMask(this._barMask);
+    this._barMask = this.initBarAndMask(option.mask) as Shape;
 
     this._minPosition = option.minPosition;
     this._maxPosition = option.maxPosition;
@@ -121,10 +119,8 @@ export class SliderView extends Container {
    */
   protected limitSliderButtonPosition(evt: createjs.MouseEvent): number {
     let mousePos: number = this.getMousePosition(this, evt);
-    mousePos = this._maxPosition < mousePos ? this._maxPosition : mousePos;
-    /*Math.min( _maxPosition, mousePos );*/
-    mousePos = this._minPosition > mousePos ? this._minPosition : mousePos;
-    /*Math.max( _minPosition, mousePos );*/
+    mousePos = Math.min(this._maxPosition, mousePos);
+    mousePos = Math.max(this._minPosition, mousePos);
     return mousePos;
   }
 
@@ -134,11 +130,15 @@ export class SliderView extends Container {
    * @param	mousePos
    */
   private updateParts(mousePos: number): void {
-    if (this._bar && !this._barMask)
+    //バーマスクがなければ、バー自体を伸縮する
+    if (this._bar && !this._barMask) {
       this.setSize(this._bar, Math.max(2.0, mousePos - this._minPosition));
+    }
+    //バーマスクがあれば、マスクを伸縮する。
     if (this._barMask) {
       this.setSize(this._barMask, mousePos - this.getPosition(this._barMask));
     }
+    //ボタンの位置を更新する。
     if (this._slideButton) {
       this.setPosition(this._slideButton, mousePos);
     }
@@ -176,16 +176,12 @@ export class SliderView extends Container {
    * @return
    */
   protected changeRateToPixel(rate: number): number {
-    let currentPix: number =
+    let pix: number =
       ((this._maxPosition - this._minPosition) * rate) / SliderView.MAX_RATE +
       this._minPosition;
-    currentPix =
-      currentPix > this._minPosition ? currentPix : this._minPosition;
-    /*Math.max( currentPix, _minPosition );*/
-    currentPix =
-      currentPix < this._maxPosition ? currentPix : this._maxPosition;
-    /*Math.min( currentPix, _maxPosition );*/
-    return currentPix;
+    pix = Math.max(pix, this._minPosition);
+    pix = Math.min(pix, this._maxPosition);
+    return pix;
   }
 
   /**
@@ -194,16 +190,13 @@ export class SliderView extends Container {
    * @return
    */
   protected changePixelToRate(pixel: number): number {
-    let currentRate: number =
-      ((pixel - this._minPosition) / (this._maxPosition - this._minPosition)) *
-      SliderView.MAX_RATE;
-    currentRate = currentRate > 0.0 ? currentRate : 0.0;
-    /*Math.max( currentRate, 0.0 );*/
-    currentRate =
-      currentRate < SliderView.MAX_RATE ? currentRate : SliderView.MAX_RATE;
-    /*Math.min( currentRate, SliderView.MAX_RATE );*/
+    const min = this._minPosition;
+    const max = this._maxPosition;
+    let rate: number = ((pixel - min) / (max - min)) * SliderView.MAX_RATE;
 
-    return currentRate;
+    rate = Math.max(rate, 0.0);
+    rate = Math.min(rate, SliderView.MAX_RATE);
+    return rate;
   }
 
   /**
@@ -282,7 +275,7 @@ export class SliderView extends Container {
     }
   }
 
-  set base(value: DisplayObject) {
+  private set base(value: DisplayObject) {
     if (!value) return;
 
     this._base = value;
@@ -293,31 +286,20 @@ export class SliderView extends Container {
     this.addChildMe(value);
   }
 
-  get base(): DisplayObject {
-    return this._base;
-  }
-
-  private initBarAndMask(value: DisplayObject): void {
+  private initBarAndMask(value: DisplayObject): DisplayObject {
     if (value == null) return;
     if (this._bar && this._barMask) this._bar.mask = this._barMask;
     value.mouseEnabled = false;
     this.addChildMe(value);
+    return value;
   }
 
-  set slideButton(value: DisplayObject) {
+  private set slideButton(value: DisplayObject) {
     if (!value) return;
 
     this._slideButton = value;
     this._slideButton.addEventListener("mousedown", this.startMove);
     this.addChildMe(value);
-  }
-
-  set minPosition(value: number) {
-    this._minPosition = value;
-  }
-
-  set maxPosition(value: number) {
-    this._maxPosition = value;
   }
 
   get rate() {
