@@ -114,6 +114,23 @@ const getScrollBarContents = (color, w, h, container) => {
   return shape;
 };
 
+const getScrollBarOption = (contentsW, scrollBarH, container) => {
+  return {
+    targetContents: getScrollBarContents(
+      "#f0f",
+      contentsW,
+      scrollBarH * 2,
+      container
+    ),
+    contentsMask: getScrollBarContents(
+      "rgba(0,0,255,0.3)",
+      contentsW,
+      scrollBarH,
+      container
+    )
+  };
+};
+
 /**
  * スクロールバーの実装サンプル
  * @param stage
@@ -129,21 +146,6 @@ const initScrollBar = stage => {
   container.x = 800;
   container.y = SCROLLBAR_Y;
 
-  const barOption = {
-    targetContents: getScrollBarContents(
-      "#f0f",
-      CONTENTS_W,
-      SCROLLBAR_H * 2,
-      container
-    ),
-    contentsMask: getScrollBarContents(
-      "rgba(0,0,255,0.3)",
-      CONTENTS_W,
-      SCROLLBAR_H,
-      container
-    )
-  };
-
   const scrollbar = new ScrollBarView(
     {
       base: getScrollBarBase(SCROLLBAR_W, SCROLLBAR_H, "#00f"),
@@ -153,7 +155,7 @@ const initScrollBar = stage => {
       rate: 30.0,
       isHorizontal: false
     },
-    barOption
+    getScrollBarOption(CONTENTS_W, SCROLLBAR_H, container)
   );
 
   stage.addChild(scrollbar);
