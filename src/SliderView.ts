@@ -94,7 +94,7 @@ export class SliderView extends Container {
 
     this._rate = rate;
     this.updateSliderPositions();
-    this.dispatchSliderEvent(SliderEventType.CHANGE);
+    this.dispatchEvent(new SliderEvent(SliderEventType.CHANGE, this.rate));
   }
 
   /**
@@ -135,7 +135,7 @@ export class SliderView extends Container {
     this.updateParts(mousePos);
 
     this._rate = this.changePixelToRate(mousePos);
-    this.dispatchSliderEvent(SliderEventType.CHANGE);
+    this.dispatchEvent(new SliderEvent(SliderEventType.CHANGE, this.rate));
   };
 
   /**
@@ -168,15 +168,6 @@ export class SliderView extends Container {
   }
 
   /**
-   * スライダーの変更に関するイベントを発行する
-   * @param {SliderEventType} type
-   */
-  protected dispatchSliderEvent(type: SliderEventType): void {
-    const e: SliderEvent = new SliderEvent(type, this.rate);
-    this.dispatchEvent(e);
-  }
-
-  /**
    * スライダーのドラッグ終了時の処理
    * @param	evt
    */
@@ -184,7 +175,9 @@ export class SliderView extends Container {
     this.isDragging = false;
     this.stage.removeEventListener("pressmove", this.moveSlider);
     this.stage.removeEventListener("pressup", this.moveSliderFinish);
-    this.dispatchSliderEvent(SliderEventType.CHANGE_FINISH);
+    this.dispatchEvent(
+      new SliderEvent(SliderEventType.CHANGE_FINISH, this.rate)
+    );
   };
 
   /**
@@ -195,7 +188,9 @@ export class SliderView extends Container {
   protected onPressBase(evt: createjs.MouseEvent): void {
     this.dragStartPos = new Point();
     this.moveSlider(evt);
-    this.dispatchSliderEvent(SliderEventType.CHANGE_FINISH);
+    this.dispatchEvent(
+      new SliderEvent(SliderEventType.CHANGE_FINISH, this.rate)
+    );
   }
 
   /**
@@ -253,8 +248,7 @@ export class SliderView extends Container {
    * @param	position
    */
   protected setPosition(displayObj: DisplayObject, position: number): void {
-
-    if( !displayObj ) return;
+    if (!displayObj) return;
 
     if (this.isHorizontal) {
       displayObj.x = position;
@@ -310,7 +304,6 @@ export class SliderView extends Container {
       displayObj.scaleY = amount / size.height;
     }
   }
-
 
   set base(value: DisplayObject) {
     if (!value) return;
