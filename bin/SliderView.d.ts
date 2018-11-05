@@ -118,9 +118,8 @@ export declare class SliderView extends Container {
      */
     protected setSize(displayObj: DisplayObject, amount: number): void;
     base: DisplayObject;
-    bar: DisplayObject;
+    private initBarAndMask;
     slideButton: DisplayObject;
-    barMask: Shape;
     minPosition: number;
     maxPosition: number;
     readonly rate: number;

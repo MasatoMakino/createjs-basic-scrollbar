@@ -48,19 +48,17 @@ export class SliderView extends Container {
   protected init(option: SliderViewOption): void {
     option = SliderViewOption.init(option);
 
-    this.bar = option.bar;
-    this.slideButton = option.button;
-    this.barMask = option.mask;
     this.base = option.base;
+    this._bar = option.bar;
+    this.initBarAndMask(this._bar);
+    this.slideButton = option.button;
+    this._barMask = option.mask;
+    this.initBarAndMask(this._barMask);
+
     this._minPosition = option.minPosition;
     this._maxPosition = option.maxPosition;
     this.isHorizontal = option.isHorizontal;
     this._rate = option.rate;
-
-    //パーツの重なり順を適正化する。
-    this.addChildMe(this._base);
-    this.addChildMe(this._bar);
-    this.addChildMe(this._slideButton);
 
     this.changeRate(this._rate);
   }
@@ -299,12 +297,10 @@ export class SliderView extends Container {
     return this._base;
   }
 
-  set bar(value: DisplayObject) {
-    if (!value) return;
-
-    this._bar = value;
-    if (this._barMask) this._bar.mask = this._barMask;
-    this._bar.mouseEnabled = false;
+  private initBarAndMask(value: DisplayObject): void {
+    if (value == null) return;
+    if (this._bar && this._barMask) this._bar.mask = this._barMask;
+    value.mouseEnabled = false;
     this.addChildMe(value);
   }
 
@@ -313,15 +309,6 @@ export class SliderView extends Container {
 
     this._slideButton = value;
     this._slideButton.addEventListener("mousedown", this.startMove);
-    this.addChildMe(value);
-  }
-
-  set barMask(value: Shape) {
-    if (!value) return;
-
-    this._barMask = value;
-    if (this._bar) this._bar.mask = this._barMask;
-    this._barMask.mouseEnabled = false;
     this.addChildMe(value);
   }
 
