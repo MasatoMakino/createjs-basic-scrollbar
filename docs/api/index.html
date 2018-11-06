@@ -64,6 +64,32 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
+				<h1 id="createjs-basic-scrollbar">createjs-basic-scrollbar</h1>
+				<p>Scrollbar library for CreateJS.</p>
+				<p><a href="https://codeclimate.com/github/MasatoMakino/createjs-basic-scrollbar/maintainability"><img src="https://api.codeclimate.com/v1/badges/cad7f4840c95696dd163/maintainability" alt="Maintainability"></a>
+				<a href="LICENSE"><img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="MIT License"></a></p>
+				<h2 id="demo">Demo</h2>
+				<p><a href="https://masatomakino.github.io/createjs-basic-scrollbar/demo/">Demo Page</a></p>
+				<h2 id="getting-started">Getting Started</h2>
+				<h3 id="install">Install</h3>
+				<p>createjs-basic-scrollbar depend on <a href="https://github.com/CreateJS/EaselJS">CreateJS / EaselJS</a></p>
+				<pre><code class="language-bash">npm install easeljs --save-dev</code></pre>
+				<p>or load script files in html.</p>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://code.createjs.com/1.0.0/easeljs.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+				<p>and</p>
+				<pre><code class="language-bash">npm install https://github.com/MasatoMakino/createjs-basic-scrollbar.git --save-dev</code></pre>
+				<h3 id="add-slider">Add slider</h3>
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> slider = <span class="hljs-keyword">new</span> SliderView({
+  <span class="hljs-attr">base</span>: <span class="hljs-keyword">new</span> createjs.Bitmap(<span class="hljs-string">"base.jpg"</span>),
+  <span class="hljs-attr">button</span>: <span class="hljs-keyword">new</span> createjs.Bitmap(<span class="hljs-string">"button.jpg"</span>),
+  <span class="hljs-attr">minPosition</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">maxPosition</span>: <span class="hljs-number">240</span>
+});
+stage.addChild(slider);</code></pre>
+				<p><a href="https://masatomakino.github.io/createjs-basic-scrollbar/api/">API documents</a></p>
+				<p>see also <a href="https://masatomakino.github.io/createjs-basic-scrollbar/demo/main.js">demo script</a>.</p>
+				<h2 id="license">License</h2>
+				<p>createjs-basic-scrollbar is <a href="LICENSE">MIT licensed</a>.</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
