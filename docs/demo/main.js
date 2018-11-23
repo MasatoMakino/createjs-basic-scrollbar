@@ -74,7 +74,7 @@ const initSlider = stage => {
     mask: getSliderMask(SLIDER_W, SLIDER_H),
     minPosition: 0,
     maxPosition: SLIDER_W,
-    rate: 50.0
+    rate: 25.0
   });
 
   slider.addEventListener(SliderEventType.CHANGE, e => {

@@ -72,6 +72,8 @@ export class SliderView extends Container {
         this._bar = this.initBarAndMask(option.bar);
         this.slideButton = option.button;
         this._barMask = this.initBarAndMask(option.mask);
+        if (this._bar && this._barMask)
+            this._bar.mask = this._barMask;
         this._minPosition = option.minPosition;
         this._maxPosition = option.maxPosition;
         this.isHorizontal = option.isHorizontal;
@@ -246,8 +248,6 @@ export class SliderView extends Container {
     initBarAndMask(value) {
         if (value == null)
             return;
-        if (this._bar && this._barMask)
-            this._bar.mask = this._barMask;
         value.mouseEnabled = false;
         this.addChildMe(value);
         return value;
