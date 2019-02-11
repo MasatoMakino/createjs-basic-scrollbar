@@ -30,15 +30,16 @@
   },
   "scripts": {
     "test": "jest --coverage",
-    "build": "npm run prettier:src && tsc &&  npm run babel && npm run doc",
+    "build": "npm run prettier:src && tsc &&  npm run babel",
     "prettier:src": "prettier --write './!(bin)/**/*.{js,ts,json}' ",
     "babel": "webpack --mode development --module-bind js=babel-loader ./docs/demo/main.js --output ./docs/demo/bundle.js",
     "watch:babel": "npm run babel -- -w",
     "watch:server": "node task/browsersync.js development",
     "server": "node task/browsersync.js production",
-    "doc": "npm run doc:generate && npm run doc:replaceNode",
+    "doc": "npm run doc:generate && npm run doc:replaceNode && npm run doc:card",
     "doc:generate": "typedoc --tsconfig tsdocconfig.json src",
-    "doc:replaceNode": "node ./task/replaceAPI.js"
+    "doc:replaceNode": "node ./task/replaceAPI.js",
+    "doc:card": "repoimg -n MasatoMakino/createjs-basic-scrollbar -o ./docs/card.png"
   },
   "husky": {
     "hooks": {
