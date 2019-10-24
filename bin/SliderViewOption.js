@@ -10,18 +10,16 @@ export class SliderViewOption {
         return option;
     }
     static check(option) {
-        this.checkParts(option.base);
-        this.checkParts(option.button);
-        this.checkParts(option.mask);
-        this.checkParts(option.bar);
+        this.checkParts(option.base, "base");
+        this.checkParts(option.button, "button");
+        this.checkParts(option.mask, "mask");
+        this.checkParts(option.bar, "bar");
     }
-    static checkParts(obj) {
+    static checkParts(obj, targetName) {
         if (obj == null)
             return;
         if (obj.getBounds() === null) {
-            throw new Error("初期化オプションで指定されたShapeにバウンディングボックスが存在しません。" +
-                "Shapeを利用する場合はsetBounds関数を利用して" +
-                "バウンディングボックスを手動で設定してください。");
+            throw new Error(`SliderView : ${targetName} 初期化オプションで指定されたDisplayObjectにバウンディングボックスが存在しません。ShapeやContainerを利用する場合はsetBounds関数を利用してバウンディングボックスを手動で設定してください。`);
         }
         if (obj.parent) {
             console.warn("初期化オプションで指定されたパーツがすでに別の親にaddChildされています。" +

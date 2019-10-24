@@ -245,7 +245,7 @@ export class ScrollBarViewInitOption {
 
     if (option.targetContents.getBounds() === null) {
       throw new Error(
-          "ScrollBarView : 初期化オプションで指定されたtargetContentsにバウンディングボックスが存在しません。" +
+        "ScrollBarView : 初期化オプションで指定されたtargetContentsにバウンディングボックスが存在しません。" +
           "ShapeやContainerを利用する場合はsetBounds関数を利用して" +
           "バウンディングボックスを手動で設定してください。"
       );
@@ -253,7 +253,7 @@ export class ScrollBarViewInitOption {
 
     if (option.contentsMask.getBounds() === null) {
       throw new Error(
-          "ScrollBarView : 初期化オプションで指定されたcontentsMaskにバウンディングボックスが存在しません。" +
+        "ScrollBarView : 初期化オプションで指定されたcontentsMaskにバウンディングボックスが存在しません。" +
           "Shapeを利用する場合はsetBounds関数を利用して" +
           "バウンディングボックスを手動で設定してください。"
       );

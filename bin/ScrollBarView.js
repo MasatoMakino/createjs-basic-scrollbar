@@ -188,5 +188,15 @@ export class ScrollBarViewInitOption {
         if (option.contentsMask.parent != option.contentsMask.parent) {
             console.warn("ScrollBarView : スクロールするコンテンツと、そのマスクは表示ツリー上で同一の親Containerを持っている必要があります。", option.targetContents, option.contentsMask);
         }
+        if (option.targetContents.getBounds() === null) {
+            throw new Error("ScrollBarView : 初期化オプションで指定されたtargetContentsにバウンディングボックスが存在しません。" +
+                "ShapeやContainerを利用する場合はsetBounds関数を利用して" +
+                "バウンディングボックスを手動で設定してください。");
+        }
+        if (option.contentsMask.getBounds() === null) {
+            throw new Error("ScrollBarView : 初期化オプションで指定されたcontentsMaskにバウンディングボックスが存在しません。" +
+                "Shapeを利用する場合はsetBounds関数を利用して" +
+                "バウンディングボックスを手動で設定してください。");
+        }
     }
 }
