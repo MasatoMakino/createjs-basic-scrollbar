@@ -47,7 +47,7 @@ export declare class ScrollBarView extends SliderView {
      * スライダーボタンのサイズ。
      * @returns {number}
      */
-    readonly slideButtonSize: number;
+    get slideButtonSize(): number;
     /**
      * スクロールバーのボタンサイズ及び位置を更新する。
      * コンテンツサイズが変更された場合の更新にも利用する。
@@ -61,7 +61,7 @@ export declare class ScrollBarView extends SliderView {
     /**
      * autoHideの条件に一致するかを判定する
      */
-    protected readonly isHide: boolean;
+    protected get isHide(): boolean;
     /**
      * スライダーイベントに応じてコンテンツをスクロールする
      * @param {Object} e
@@ -73,9 +73,9 @@ export declare class ScrollBarView extends SliderView {
      */
     protected updateContentsPositionWithRate(rate: number): void;
     protected onPressBase(evt: createjs.MouseEvent): void;
-    readonly targetContents: DisplayObject;
+    get targetContents(): DisplayObject;
     protected setTargetContents(value: DisplayObject): void;
-    readonly contentsMask: DisplayObject;
+    get contentsMask(): DisplayObject;
     protected setContentsMask(value: DisplayObject): void;
     protected onDisposeFunction(e?: Event): void;
 }

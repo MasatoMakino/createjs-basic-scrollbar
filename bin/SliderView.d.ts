@@ -117,10 +117,10 @@ export declare class SliderView extends Container {
      * @param {number} amount
      */
     protected setSize(displayObj: DisplayObject, amount: number): void;
-    private base;
+    private set base(value);
     private initBarAndMask;
-    private slideButton;
-    readonly rate: number;
+    private set slideButton(value);
+    get rate(): number;
     /**
      * このインスタンスを破棄する。
      * @param	e

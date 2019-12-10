@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ScrollBarView | createjs-basic-scrollbar</title>
+	<title>SliderView | createjs-basic-scrollbar</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_scrollbarview_.html">&quot;ScrollBarView&quot;</a>
-				</li>
-				<li>
-					<a href="_scrollbarview_.scrollbarview.html">ScrollBarView</a>
+					<a href="sliderview.html">SliderView</a>
 				</li>
 			</ul>
-			<h1>Class ScrollBarView</h1>
+			<h1>Class SliderView</h1>
 		</div>
 	</div>
 </header>
@@ -72,24 +69,27 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>スクロールバーを表すクラスです。</p>
+						<p>スライダー用クラスです</p>
 					</div>
-					<p>このクラスは、スライダーに以下の機能を追加したものです。</p>
-					<pre><code>    <span class="hljs-number">1.</span>コンテンツサイズに合わせた、スクロールバーの伸縮
-    <span class="hljs-number">2.</span>スクロールバーの伸縮にあわせた、移動範囲の制限
-    <span class="hljs-number">3.</span>スクロールバーの伸縮にあわせた、移動値の取得</code></pre><p>初期設定の注意
-						スクロール対象とマスクは同一の親をもつこと。
-					ローカル、グローバルの座標変換は行っていないので別の親をもつとスクロールが破たんします。</p>
+					<p>使用上の注意 :
+						オブジェクトのサイズの計測にgetBounds関数を使用しています。
+						shapeおよびContainerクラスでは、getBoundsの自動計測が効かない場合があります。
+					setBounds関数でサイズをあらかじめ与えてください。</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="_sliderview_.sliderview.html" class="tsd-signature-type">SliderView</a>
+						<span class="tsd-signature-type">Container</span>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">ScrollBarView</span>
+								<span class="target">SliderView</span>
+								<ul class="tsd-hierarchy">
+									<li>
+										<a href="scrollbarview.html" class="tsd-signature-type">ScrollBarView</a>
+									</li>
+								</ul>
 							</li>
 						</ul>
 					</li>
@@ -102,139 +102,135 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_scrollbarview_.scrollbarview.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="sliderview.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#_bar" class="tsd-kind-icon">_bar</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#_barmask" class="tsd-kind-icon">_bar<wbr>Mask</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#_base" class="tsd-kind-icon">_base</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#_contentsmask" class="tsd-kind-icon">_contents<wbr>Mask</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#_maxposition" class="tsd-kind-icon">_max<wbr>Position</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#_minposition" class="tsd-kind-icon">_min<wbr>Position</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#_slidebutton" class="tsd-kind-icon">_slide<wbr>Button</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#_targetcontents" class="tsd-kind-icon">_target<wbr>Contents</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#alpha" class="tsd-kind-icon">alpha</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_scrollbarview_.scrollbarview.html#autohide" class="tsd-kind-icon">auto<wbr>Hide</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#bitmapcache" class="tsd-kind-icon">bitmap<wbr>Cache</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#cachecanvas" class="tsd-kind-icon">cache<wbr>Canvas</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#cacheid" class="tsd-kind-icon">cacheID</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#children" class="tsd-kind-icon">children</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#compositeoperation" class="tsd-kind-icon">composite<wbr>Operation</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#cursor" class="tsd-kind-icon">cursor</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#dragstartpos" class="tsd-kind-icon">drag<wbr>Start<wbr>Pos</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#filters" class="tsd-kind-icon">filters</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#hitarea" class="tsd-kind-icon">hit<wbr>Area</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#id" class="tsd-kind-icon">id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#ishorizontal" class="tsd-kind-icon">is<wbr>Horizontal</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#mask" class="tsd-kind-icon">mask</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#mousechildren" class="tsd-kind-icon">mouse<wbr>Children</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#mouseenabled" class="tsd-kind-icon">mouse<wbr>Enabled</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#numchildren" class="tsd-kind-icon">num<wbr>Children</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#parent" class="tsd-kind-icon">parent</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#regx" class="tsd-kind-icon">regX</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#regy" class="tsd-kind-icon">regY</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#rotation" class="tsd-kind-icon">rotation</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#scalex" class="tsd-kind-icon">scaleX</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#scaley" class="tsd-kind-icon">scaleY</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#shadow" class="tsd-kind-icon">shadow</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#skewx" class="tsd-kind-icon">skewX</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#skewy" class="tsd-kind-icon">skewY</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#snaptopixel" class="tsd-kind-icon">snap<wbr>ToPixel</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#stage" class="tsd-kind-icon">stage</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#tickchildren" class="tsd-kind-icon">tick<wbr>Children</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#tickenabled" class="tsd-kind-icon">tick<wbr>Enabled</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#transformmatrix" class="tsd-kind-icon">transform<wbr>Matrix</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#visible" class="tsd-kind-icon">visible</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#x" class="tsd-kind-icon">x</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#y" class="tsd-kind-icon">y</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_scrollbarview_.scrollbarview.html#max_rate" class="tsd-kind-icon">MAX_<wbr>RATE</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_scrollbarview_.scrollbarview.html#suppresscrossdomainerrors" class="tsd-kind-icon">suppress<wbr>Cross<wbr>Domain<wbr>Errors</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="sliderview.html#_bar" class="tsd-kind-icon">_bar</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="sliderview.html#_barmask" class="tsd-kind-icon">_bar<wbr>Mask</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="sliderview.html#_base" class="tsd-kind-icon">_base</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="sliderview.html#_maxposition" class="tsd-kind-icon">_max<wbr>Position</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="sliderview.html#_minposition" class="tsd-kind-icon">_min<wbr>Position</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="sliderview.html#_rate" class="tsd-kind-icon">_rate</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="sliderview.html#_slidebutton" class="tsd-kind-icon">_slide<wbr>Button</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#alpha" class="tsd-kind-icon">alpha</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#bitmapcache" class="tsd-kind-icon">bitmap<wbr>Cache</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#cachecanvas" class="tsd-kind-icon">cache<wbr>Canvas</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#cacheid" class="tsd-kind-icon">cacheID</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#children" class="tsd-kind-icon">children</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#compositeoperation" class="tsd-kind-icon">composite<wbr>Operation</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#cursor" class="tsd-kind-icon">cursor</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="sliderview.html#dragstartpos" class="tsd-kind-icon">drag<wbr>Start<wbr>Pos</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#filters" class="tsd-kind-icon">filters</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#hitarea" class="tsd-kind-icon">hit<wbr>Area</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="sliderview.html#isdragging" class="tsd-kind-icon">is<wbr>Dragging</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="sliderview.html#ishorizontal" class="tsd-kind-icon">is<wbr>Horizontal</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#mask" class="tsd-kind-icon">mask</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#mousechildren" class="tsd-kind-icon">mouse<wbr>Children</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#mouseenabled" class="tsd-kind-icon">mouse<wbr>Enabled</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#numchildren" class="tsd-kind-icon">num<wbr>Children</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#parent" class="tsd-kind-icon">parent</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#regx" class="tsd-kind-icon">regX</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#regy" class="tsd-kind-icon">regY</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#rotation" class="tsd-kind-icon">rotation</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#scalex" class="tsd-kind-icon">scaleX</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#scaley" class="tsd-kind-icon">scaleY</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#shadow" class="tsd-kind-icon">shadow</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#skewx" class="tsd-kind-icon">skewX</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#skewy" class="tsd-kind-icon">skewY</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#snaptopixel" class="tsd-kind-icon">snap<wbr>ToPixel</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#stage" class="tsd-kind-icon">stage</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#tickchildren" class="tsd-kind-icon">tick<wbr>Children</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#tickenabled" class="tsd-kind-icon">tick<wbr>Enabled</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#transformmatrix" class="tsd-kind-icon">transform<wbr>Matrix</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#visible" class="tsd-kind-icon">visible</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#x" class="tsd-kind-icon">x</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#y" class="tsd-kind-icon">y</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="sliderview.html#max_rate" class="tsd-kind-icon">MAX_<wbr>RATE</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="sliderview.html#suppresscrossdomainerrors" class="tsd-kind-icon">suppress<wbr>Cross<wbr>Domain<wbr>Errors</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_scrollbarview_.scrollbarview.html#contentsmask" class="tsd-kind-icon">contents<wbr>Mask</a></li>
-								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#ishide" class="tsd-kind-icon">is<wbr>Hide</a></li>
-								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#rate" class="tsd-kind-icon">rate</a></li>
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_scrollbarview_.scrollbarview.html#slidebuttonsize" class="tsd-kind-icon">slide<wbr>Button<wbr>Size</a></li>
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_scrollbarview_.scrollbarview.html#targetcontents" class="tsd-kind-icon">target<wbr>Contents</a></li>
+								<li class="tsd-kind-set-signature tsd-parent-kind-class tsd-is-private"><a href="sliderview.html#base" class="tsd-kind-icon">base</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="sliderview.html#rate" class="tsd-kind-icon">rate</a></li>
+								<li class="tsd-kind-set-signature tsd-parent-kind-class tsd-is-private"><a href="sliderview.html#slidebutton" class="tsd-kind-icon">slide<wbr>Button</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#addchild" class="tsd-kind-icon">add<wbr>Child</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#addchildat" class="tsd-kind-icon">add<wbr>Child<wbr>At</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#addeventlistener" class="tsd-kind-icon">add<wbr>Event<wbr>Listener</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#cache" class="tsd-kind-icon">cache</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#changepixeltorate" class="tsd-kind-icon">change<wbr>Pixel<wbr>ToRate</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#changerate" class="tsd-kind-icon">change<wbr>Rate</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#changeratetopixel" class="tsd-kind-icon">change<wbr>Rate<wbr>ToPixel</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#clone" class="tsd-kind-icon">clone</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#contains" class="tsd-kind-icon">contains</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#dispatchevent" class="tsd-kind-icon">dispatch<wbr>Event</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#dispose" class="tsd-kind-icon">dispose</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#draw" class="tsd-kind-icon">draw</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#getbounds" class="tsd-kind-icon">get<wbr>Bounds</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#getcachedataurl" class="tsd-kind-icon">get<wbr>Cache<wbr>DataURL</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#getchildat" class="tsd-kind-icon">get<wbr>Child<wbr>At</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#getchildbyname" class="tsd-kind-icon">get<wbr>Child<wbr>ByName</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#getchildindex" class="tsd-kind-icon">get<wbr>Child<wbr>Index</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#getconcatenateddisplayprops" class="tsd-kind-icon">get<wbr>Concatenated<wbr>Display<wbr>Props</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#getconcatenatedmatrix" class="tsd-kind-icon">get<wbr>Concatenated<wbr>Matrix</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#getmatrix" class="tsd-kind-icon">get<wbr>Matrix</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#getmouseposition" class="tsd-kind-icon">get<wbr>Mouse<wbr>Position</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#getnumchildren" class="tsd-kind-icon">get<wbr>Num<wbr>Children</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#getobjectunderpoint" class="tsd-kind-icon">get<wbr>Object<wbr>Under<wbr>Point</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#getobjectsunderpoint" class="tsd-kind-icon">get<wbr>Objects<wbr>Under<wbr>Point</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#getposition" class="tsd-kind-icon">get<wbr>Position</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#getsize" class="tsd-kind-icon">get<wbr>Size</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#getstage" class="tsd-kind-icon">get<wbr>Stage</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#gettransformedbounds" class="tsd-kind-icon">get<wbr>Transformed<wbr>Bounds</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#globaltolocal" class="tsd-kind-icon">global<wbr>ToLocal</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#haseventlistener" class="tsd-kind-icon">has<wbr>Event<wbr>Listener</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#hittest" class="tsd-kind-icon">hit<wbr>Test</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#init" class="tsd-kind-icon">init</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_scrollbarview_.scrollbarview.html#initsliderbuttonsize" class="tsd-kind-icon">init<wbr>Slider<wbr>Button<wbr>Size</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#initsliderposition" class="tsd-kind-icon">init<wbr>Slider<wbr>Position</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#isvisible" class="tsd-kind-icon">is<wbr>Visible</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#limitsliderbuttonposition" class="tsd-kind-icon">limit<wbr>Slider<wbr>Button<wbr>Position</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#localtoglobal" class="tsd-kind-icon">local<wbr>ToGlobal</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#localtolocal" class="tsd-kind-icon">local<wbr>ToLocal</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#off" class="tsd-kind-icon">off</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#on" class="tsd-kind-icon">on</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#ondisposefunction" class="tsd-kind-icon">on<wbr>Dispose<wbr>Function</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#onpressbase" class="tsd-kind-icon">on<wbr>Press<wbr>Base</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#removeallchildren" class="tsd-kind-icon">remove<wbr>All<wbr>Children</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#removealleventlisteners" class="tsd-kind-icon">remove<wbr>All<wbr>Event<wbr>Listeners</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#removechild" class="tsd-kind-icon">remove<wbr>Child</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#removechildat" class="tsd-kind-icon">remove<wbr>Child<wbr>At</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#removeeventlistener" class="tsd-kind-icon">remove<wbr>Event<wbr>Listener</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#set" class="tsd-kind-icon">set</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#setbounds" class="tsd-kind-icon">set<wbr>Bounds</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#setchildindex" class="tsd-kind-icon">set<wbr>Child<wbr>Index</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#setcontentsmask" class="tsd-kind-icon">set<wbr>Contents<wbr>Mask</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#setposition" class="tsd-kind-icon">set<wbr>Position</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#setsize" class="tsd-kind-icon">set<wbr>Size</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#settargetcontents" class="tsd-kind-icon">set<wbr>Target<wbr>Contents</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#settransform" class="tsd-kind-icon">set<wbr>Transform</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#sortchildren" class="tsd-kind-icon">sort<wbr>Children</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#swapchildren" class="tsd-kind-icon">swap<wbr>Children</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#swapchildrenat" class="tsd-kind-icon">swap<wbr>Children<wbr>At</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#uncache" class="tsd-kind-icon">uncache</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#updatecache" class="tsd-kind-icon">update<wbr>Cache</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_scrollbarview_.scrollbarview.html#updatecontentsposition" class="tsd-kind-icon">update<wbr>Contents<wbr>Position</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#updatecontentspositionwithrate" class="tsd-kind-icon">update<wbr>Contents<wbr>Position<wbr>With<wbr>Rate</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#updatecontext" class="tsd-kind-icon">update<wbr>Context</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_scrollbarview_.scrollbarview.html#updateslidebuttonsize" class="tsd-kind-icon">update<wbr>Slide<wbr>Button<wbr>Size</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_scrollbarview_.scrollbarview.html#willtrigger" class="tsd-kind-icon">will<wbr>Trigger</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_scrollbarview_.scrollbarview.html#initialize" class="tsd-kind-icon">initialize</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="sliderview.html#addchild" class="tsd-kind-icon">add<wbr>Child</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="sliderview.html#addchildat" class="tsd-kind-icon">add<wbr>Child<wbr>At</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="sliderview.html#addchildme" class="tsd-kind-icon">add<wbr>Child<wbr>Me</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#addeventlistener" class="tsd-kind-icon">add<wbr>Event<wbr>Listener</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#cache" class="tsd-kind-icon">cache</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="sliderview.html#changepixeltorate" class="tsd-kind-icon">change<wbr>Pixel<wbr>ToRate</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="sliderview.html#changerate" class="tsd-kind-icon">change<wbr>Rate</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="sliderview.html#changeratetopixel" class="tsd-kind-icon">change<wbr>Rate<wbr>ToPixel</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="sliderview.html#clone" class="tsd-kind-icon">clone</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#contains" class="tsd-kind-icon">contains</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#dispatchevent" class="tsd-kind-icon">dispatch<wbr>Event</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="sliderview.html#dispose" class="tsd-kind-icon">dispose</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#draw" class="tsd-kind-icon">draw</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#getbounds" class="tsd-kind-icon">get<wbr>Bounds</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#getcachedataurl" class="tsd-kind-icon">get<wbr>Cache<wbr>DataURL</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#getchildat" class="tsd-kind-icon">get<wbr>Child<wbr>At</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#getchildbyname" class="tsd-kind-icon">get<wbr>Child<wbr>ByName</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#getchildindex" class="tsd-kind-icon">get<wbr>Child<wbr>Index</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#getconcatenateddisplayprops" class="tsd-kind-icon">get<wbr>Concatenated<wbr>Display<wbr>Props</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#getconcatenatedmatrix" class="tsd-kind-icon">get<wbr>Concatenated<wbr>Matrix</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#getmatrix" class="tsd-kind-icon">get<wbr>Matrix</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="sliderview.html#getmouseposition" class="tsd-kind-icon">get<wbr>Mouse<wbr>Position</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#getnumchildren" class="tsd-kind-icon">get<wbr>Num<wbr>Children</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#getobjectunderpoint" class="tsd-kind-icon">get<wbr>Object<wbr>Under<wbr>Point</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#getobjectsunderpoint" class="tsd-kind-icon">get<wbr>Objects<wbr>Under<wbr>Point</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="sliderview.html#getposition" class="tsd-kind-icon">get<wbr>Position</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="sliderview.html#getsize" class="tsd-kind-icon">get<wbr>Size</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#getstage" class="tsd-kind-icon">get<wbr>Stage</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#gettransformedbounds" class="tsd-kind-icon">get<wbr>Transformed<wbr>Bounds</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#globaltolocal" class="tsd-kind-icon">global<wbr>ToLocal</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#haseventlistener" class="tsd-kind-icon">has<wbr>Event<wbr>Listener</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#hittest" class="tsd-kind-icon">hit<wbr>Test</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="sliderview.html#init" class="tsd-kind-icon">init</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="sliderview.html#initbarandmask" class="tsd-kind-icon">init<wbr>Bar<wbr>And<wbr>Mask</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#isvisible" class="tsd-kind-icon">is<wbr>Visible</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="sliderview.html#limitsliderbuttonposition" class="tsd-kind-icon">limit<wbr>Slider<wbr>Button<wbr>Position</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#localtoglobal" class="tsd-kind-icon">local<wbr>ToGlobal</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#localtolocal" class="tsd-kind-icon">local<wbr>ToLocal</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="sliderview.html#moveslider" class="tsd-kind-icon">move<wbr>Slider</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="sliderview.html#movesliderfinish" class="tsd-kind-icon">move<wbr>Slider<wbr>Finish</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#off" class="tsd-kind-icon">off</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#on" class="tsd-kind-icon">on</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="sliderview.html#ondisposefunction" class="tsd-kind-icon">on<wbr>Dispose<wbr>Function</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="sliderview.html#onpressbase" class="tsd-kind-icon">on<wbr>Press<wbr>Base</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#removeallchildren" class="tsd-kind-icon">remove<wbr>All<wbr>Children</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#removealleventlisteners" class="tsd-kind-icon">remove<wbr>All<wbr>Event<wbr>Listeners</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#removechild" class="tsd-kind-icon">remove<wbr>Child</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#removechildat" class="tsd-kind-icon">remove<wbr>Child<wbr>At</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#removeeventlistener" class="tsd-kind-icon">remove<wbr>Event<wbr>Listener</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#set" class="tsd-kind-icon">set</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#setbounds" class="tsd-kind-icon">set<wbr>Bounds</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#setchildindex" class="tsd-kind-icon">set<wbr>Child<wbr>Index</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="sliderview.html#setposition" class="tsd-kind-icon">set<wbr>Position</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="sliderview.html#setsize" class="tsd-kind-icon">set<wbr>Size</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#settransform" class="tsd-kind-icon">set<wbr>Transform</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#sortchildren" class="tsd-kind-icon">sort<wbr>Children</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="sliderview.html#startmove" class="tsd-kind-icon">start<wbr>Move</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#swapchildren" class="tsd-kind-icon">swap<wbr>Children</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#swapchildrenat" class="tsd-kind-icon">swap<wbr>Children<wbr>At</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#uncache" class="tsd-kind-icon">uncache</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#updatecache" class="tsd-kind-icon">update<wbr>Cache</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#updatecontext" class="tsd-kind-icon">update<wbr>Context</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="sliderview.html#updateparts" class="tsd-kind-icon">update<wbr>Parts</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sliderview.html#willtrigger" class="tsd-kind-icon">will<wbr>Trigger</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="sliderview.html#initialize" class="tsd-kind-icon">initialize</a></li>
 							</ul>
 						</section>
 					</div>
@@ -246,115 +242,108 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Scroll<wbr>Bar<wbr>View<span class="tsd-signature-symbol">(</span>option<span class="tsd-signature-symbol">: </span><a href="_sliderviewoption_.sliderviewoption.html" class="tsd-signature-type">SliderViewOption</a>, scrollOption<span class="tsd-signature-symbol">: </span><a href="_scrollbarview_.scrollbarviewinitoption.html" class="tsd-signature-type">ScrollBarViewInitOption</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_scrollbarview_.scrollbarview.html" class="tsd-signature-type">ScrollBarView</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Slider<wbr>View<span class="tsd-signature-symbol">(</span>option<span class="tsd-signature-symbol">: </span><a href="sliderviewoption.html" class="tsd-signature-type">SliderViewOption</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="sliderview.html" class="tsd-signature-type">SliderView</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Overrides <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#constructor">constructor</a></p>
+								<p>Overrides Container.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L23">ScrollBarView.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L34">src/SliderView.ts:34</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>option: <a href="_sliderviewoption_.sliderviewoption.html" class="tsd-signature-type">SliderViewOption</a></h5>
-								</li>
-								<li>
-									<h5>scrollOption: <a href="_scrollbarview_.scrollbarviewinitoption.html" class="tsd-signature-type">ScrollBarViewInitOption</a></h5>
+									<h5>option: <a href="sliderviewoption.html" class="tsd-signature-type">SliderViewOption</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_scrollbarview_.scrollbarview.html" class="tsd-signature-type">ScrollBarView</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="sliderview.html" class="tsd-signature-type">SliderView</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 					<a name="_bar" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagOptional">Optional</span> _bar</h3>
 					<div class="tsd-signature tsd-kind-icon">_bar<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DisplayObject</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#_bar">_bar</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/SliderView.ts#L19">SliderView.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L19">src/SliderView.ts:19</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 					<a name="_barmask" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagOptional">Optional</span> _bar<wbr>Mask</h3>
 					<div class="tsd-signature tsd-kind-icon">_bar<wbr>Mask<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Shape</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#_barmask">_barMask</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/SliderView.ts#L20">SliderView.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L20">src/SliderView.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 					<a name="_base" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _base</h3>
 					<div class="tsd-signature tsd-kind-icon">_base<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DisplayObject</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#_base">_base</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/SliderView.ts#L18">SliderView.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L18">src/SliderView.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
-					<a name="_contentsmask" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _contents<wbr>Mask</h3>
-					<div class="tsd-signature tsd-kind-icon">_contents<wbr>Mask<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DisplayObject</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L22">ScrollBarView.ts:22</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="_maxposition" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _max<wbr>Position</h3>
 					<div class="tsd-signature tsd-kind-icon">_max<wbr>Position<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#_maxposition">_maxPosition</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/SliderView.ts#L24">SliderView.ts:24</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-					<a name="_minposition" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _min<wbr>Position</h3>
-					<div class="tsd-signature tsd-kind-icon">_min<wbr>Position<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#_minposition">_minPosition</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/SliderView.ts#L23">SliderView.ts:23</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-					<a name="_slidebutton" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _slide<wbr>Button</h3>
-					<div class="tsd-signature tsd-kind-icon">_slide<wbr>Button<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DisplayObject</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#_slidebutton">_slideButton</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/SliderView.ts#L21">SliderView.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L24">src/SliderView.ts:24</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
-					<a name="_targetcontents" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _target<wbr>Contents</h3>
-					<div class="tsd-signature tsd-kind-icon">_target<wbr>Contents<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DisplayObject</span></div>
+					<a name="_minposition" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _min<wbr>Position</h3>
+					<div class="tsd-signature tsd-kind-icon">_min<wbr>Position<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L21">ScrollBarView.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L23">src/SliderView.ts:23</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_rate" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _rate</h3>
+					<div class="tsd-signature tsd-kind-icon">_rate<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L32">src/SliderView.ts:32</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>現在のスライダーの位置の割合。
+							MIN 0.0 ~ SliderView.MAX_RATE。</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+					<a name="_slidebutton" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _slide<wbr>Button</h3>
+					<div class="tsd-signature tsd-kind-icon">_slide<wbr>Button<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DisplayObject</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L21">src/SliderView.ts:21</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -366,16 +355,6 @@
 						<p>Inherited from DisplayObject.alpha</p>
 						<ul>
 							<li>Defined in node_modules/@types/easeljs/index.d.ts:229</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="autohide" class="tsd-anchor"></a>
-					<h3>auto<wbr>Hide</h3>
-					<div class="tsd-signature tsd-kind-icon">auto<wbr>Hide<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L23">ScrollBarView.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -445,14 +424,13 @@
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 					<a name="dragstartpos" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> drag<wbr>Start<wbr>Pos</h3>
 					<div class="tsd-signature tsd-kind-icon">drag<wbr>Start<wbr>Pos<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Point</span><span class="tsd-signature-symbol"> =&nbsp;new createjs.Point()</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#dragstartpos">dragStartPos</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/SliderView.ts#L27">SliderView.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L27">src/SliderView.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -489,14 +467,23 @@
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="isdragging" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> is<wbr>Dragging</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Dragging<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L34">src/SliderView.ts:34</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 					<a name="ishorizontal" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> is<wbr>Horizontal</h3>
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Horizontal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#ishorizontal">isHorizontal</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/SliderView.ts#L25">SliderView.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L25">src/SliderView.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -742,14 +729,13 @@
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
 					<a name="max_rate" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> MAX_<wbr>RATE</h3>
 					<div class="tsd-signature tsd-kind-icon">MAX_<wbr>RATE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;100</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#max_rate">MAX_RATE</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/SliderView.ts#L33">SliderView.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L33">src/SliderView.ts:33</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -767,99 +753,66 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-set-signature tsd-parent-kind-class tsd-is-private">
+					<a name="base" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> base</h3>
+					<ul class="tsd-signatures tsd-kind-set-signature tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">set</span> base<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DisplayObject</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L279">src/SliderView.ts:279</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">DisplayObject</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="contentsmask" class="tsd-anchor"></a>
-					<h3>contents<wbr>Mask</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> contentsMask<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DisplayObject</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L209">ScrollBarView.ts:209</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">DisplayObject</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
-					<a name="ishide" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> is<wbr>Hide</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> isHide<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L156">ScrollBarView.ts:156</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>autoHideの条件に一致するかを判定する</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
 					<a name="rate" class="tsd-anchor"></a>
 					<h3>rate</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
 						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> rate<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#rate">rate</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/SliderView.ts#L305">SliderView.ts:305</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L305">src/SliderView.ts:305</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="slidebuttonsize" class="tsd-anchor"></a>
-					<h3>slide<wbr>Button<wbr>Size</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> slideButtonSize<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-set-signature tsd-parent-kind-class tsd-is-private">
+					<a name="slidebutton" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> slide<wbr>Button</h3>
+					<ul class="tsd-signatures tsd-kind-set-signature tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">set</span> slideButton<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DisplayObject</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L96">ScrollBarView.ts:96</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L297">src/SliderView.ts:297</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>スライダーボタンのサイズ。</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="targetcontents" class="tsd-anchor"></a>
-					<h3>target<wbr>Contents</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> targetContents<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DisplayObject</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L200">ScrollBarView.ts:200</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">DisplayObject</span></h4>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">DisplayObject</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1104,6 +1057,29 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="addchildme" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> add<wbr>Child<wbr>Me</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Child<wbr>Me<span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DisplayObject</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L65">src/SliderView.ts:65</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>obj: <span class="tsd-signature-type">DisplayObject</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="addeventlistener" class="tsd-anchor"></a>
 					<h3>add<wbr>Event<wbr>Listener</h3>
@@ -1318,18 +1294,17 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 					<a name="changepixeltorate" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> change<wbr>Pixel<wbr>ToRate</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">change<wbr>Pixel<wbr>ToRate<span class="tsd-signature-symbol">(</span>pixel<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Overrides <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#changepixeltorate">changePixelToRate</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L80">ScrollBarView.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L193">src/SliderView.ts:193</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1347,18 +1322,17 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="changerate" class="tsd-anchor"></a>
 					<h3>change<wbr>Rate</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
 						<li class="tsd-signature tsd-kind-icon">change<wbr>Rate<span class="tsd-signature-symbol">(</span>rate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#changerate">changeRate</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/SliderView.ts#L75">SliderView.ts:75</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L75">src/SliderView.ts:75</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1379,18 +1353,17 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 					<a name="changeratetopixel" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> change<wbr>Rate<wbr>ToPixel</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">change<wbr>Rate<wbr>ToPixel<span class="tsd-signature-symbol">(</span>rate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Overrides <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#changeratetopixel">changeRateToPixel</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L63">ScrollBarView.ts:63</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L179">src/SliderView.ts:179</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1522,18 +1495,17 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="dispose" class="tsd-anchor"></a>
 					<h3>dispose</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
 						<li class="tsd-signature tsd-kind-icon">dispose<span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#dispose">dispose</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/SliderView.ts#L313">SliderView.ts:313</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L313">src/SliderView.ts:313</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1762,18 +1734,17 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 					<a name="getmouseposition" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> get<wbr>Mouse<wbr>Position</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">get<wbr>Mouse<wbr>Position<span class="tsd-signature-symbol">(</span>displayObj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DisplayObject</span>, evt<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">MouseEvent</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#getmouseposition">getMousePosition</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/SliderView.ts#L237">SliderView.ts:237</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L237">src/SliderView.ts:237</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1882,18 +1853,17 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 					<a name="getposition" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> get<wbr>Position</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">get<wbr>Position<span class="tsd-signature-symbol">(</span>displayObj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DisplayObject</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#getposition">getPosition</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/SliderView.ts#L208">SliderView.ts:208</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L208">src/SliderView.ts:208</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1911,18 +1881,17 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 					<a name="getsize" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> get<wbr>Size</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">get<wbr>Size<span class="tsd-signature-symbol">(</span>displayObj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DisplayObject</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#getsize">getSize</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/SliderView.ts#L255">SliderView.ts:255</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L255">src/SliderView.ts:255</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2063,30 +2032,28 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 					<a name="init" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> init</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
-						<li class="tsd-signature tsd-kind-icon">init<span class="tsd-signature-symbol">(</span>option<span class="tsd-signature-symbol">: </span><a href="_sliderviewoption_.sliderviewoption.html" class="tsd-signature-type">SliderViewOption</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">init<span class="tsd-signature-symbol">(</span>option<span class="tsd-signature-symbol">: </span><a href="sliderviewoption.html" class="tsd-signature-type">SliderViewOption</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Overrides <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#init">init</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L40">ScrollBarView.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L48">src/SliderView.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>初期化処理
-									スライダーボタンの位置の初期化に加え、サイズの初期化も行う</p>
+									<p>初期化処理</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>option: <a href="_sliderviewoption_.sliderviewoption.html" class="tsd-signature-type">SliderViewOption</a></h5>
+									<h5>option: <a href="sliderviewoption.html" class="tsd-signature-type">SliderViewOption</a></h5>
 									<div class="tsd-comment tsd-typography">
 									</div>
 								</li>
@@ -2095,43 +2062,26 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="initsliderbuttonsize" class="tsd-anchor"></a>
-					<h3>init<wbr>Slider<wbr>Button<wbr>Size</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">init<wbr>Slider<wbr>Button<wbr>Size<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="initbarandmask" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> init<wbr>Bar<wbr>And<wbr>Mask</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">init<wbr>Bar<wbr>And<wbr>Mask<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DisplayObject</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DisplayObject</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L105">ScrollBarView.ts:105</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L290">src/SliderView.ts:290</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>スクロールバーのボタンサイズ及び位置を更新する。
-									コンテンツサイズが変更された場合の更新にも利用する。</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-					<a name="initsliderposition" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> init<wbr>Slider<wbr>Position</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-						<li class="tsd-signature tsd-kind-icon">init<wbr>Slider<wbr>Position<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L118">ScrollBarView.ts:118</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">DisplayObject</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">DisplayObject</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2153,18 +2103,17 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 					<a name="limitsliderbuttonposition" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> limit<wbr>Slider<wbr>Button<wbr>Position</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">limit<wbr>Slider<wbr>Button<wbr>Position<span class="tsd-signature-symbol">(</span>evt<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">MouseEvent</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Overrides <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#limitsliderbuttonposition">limitSliderButtonPosition</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L49">ScrollBarView.ts:49</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L121">src/SliderView.ts:121</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2243,6 +2192,70 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Point</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="moveslider" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> move<wbr>Slider</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">move<wbr>Slider<span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L107">src/SliderView.ts:107</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>スライダーのドラッグ中の処理</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>e: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="movesliderfinish" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> move<wbr>Slider<wbr>Finish</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">move<wbr>Slider<wbr>Finish<span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L152">src/SliderView.ts:152</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>スライダーのドラッグ終了時の処理</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>e: <span class="tsd-signature-type">Object</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2660,48 +2673,61 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 					<a name="ondisposefunction" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> on<wbr>Dispose<wbr>Function</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">on<wbr>Dispose<wbr>Function<span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Event</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Overrides <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#ondisposefunction">onDisposeFunction</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L218">ScrollBarView.ts:218</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L321">src/SliderView.ts:321</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>全てのDisplayObjectとEventListenerを解除する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> e: <span class="tsd-signature-type">Event</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 					<a name="onpressbase" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> on<wbr>Press<wbr>Base</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">on<wbr>Press<wbr>Base<span class="tsd-signature-symbol">(</span>evt<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">MouseEvent</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Overrides <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#onpressbase">onPressBase</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L195">ScrollBarView.ts:195</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L166">src/SliderView.ts:166</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>スライダーの地をクリックした際の処理
+									その位置までスライダーをジャンプする</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>evt: <span class="tsd-signature-type">MouseEvent</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -3083,40 +3109,16 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-					<a name="setcontentsmask" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> set<wbr>Contents<wbr>Mask</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Contents<wbr>Mask<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DisplayObject</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L213">ScrollBarView.ts:213</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>value: <span class="tsd-signature-type">DisplayObject</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="setposition" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> set<wbr>Position</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">set<wbr>Position<span class="tsd-signature-symbol">(</span>displayObj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DisplayObject</span>, position<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#setposition">setPosition</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/SliderView.ts#L221">SliderView.ts:221</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L221">src/SliderView.ts:221</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -3139,18 +3141,17 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 					<a name="setsize" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> set<wbr>Size</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">set<wbr>Size<span class="tsd-signature-symbol">(</span>displayObj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DisplayObject</span>, amount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="_sliderview_.sliderview.html">SliderView</a>.<a href="_sliderview_.sliderview.html#setsize">setSize</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/SliderView.ts#L269">SliderView.ts:269</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L269">src/SliderView.ts:269</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -3167,29 +3168,6 @@
 									<h5>amount: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
 									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-					<a name="settargetcontents" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> set<wbr>Target<wbr>Contents</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Target<wbr>Contents<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DisplayObject</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L204">ScrollBarView.ts:204</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>value: <span class="tsd-signature-type">DisplayObject</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -3283,6 +3261,38 @@
 											</ul>
 										</li>
 									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="startmove" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> start<wbr>Move</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">start<wbr>Move<span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L90">src/SliderView.ts:90</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>スライダーのドラッグを開始する</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>e: <span class="tsd-signature-type">Object</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -3403,68 +3413,6 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="updatecontentsposition" class="tsd-anchor"></a>
-					<h3>update<wbr>Contents<wbr>Position</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">update<wbr>Contents<wbr>Position<span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L177">ScrollBarView.ts:177</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>スライダーイベントに応じてコンテンツをスクロールする</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>e: <span class="tsd-signature-type">Object</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-										</div>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-					<a name="updatecontentspositionwithrate" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> update<wbr>Contents<wbr>Position<wbr>With<wbr>Rate</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-						<li class="tsd-signature tsd-kind-icon">update<wbr>Contents<wbr>Position<wbr>With<wbr>Rate<span class="tsd-signature-symbol">(</span>rate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L186">ScrollBarView.ts:186</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>rate値を元にコンテンツをスクロールする。</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>rate: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="updatecontext" class="tsd-anchor"></a>
 					<h3>update<wbr>Context</h3>
@@ -3489,24 +3437,33 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-					<a name="updateslidebuttonsize" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> update<wbr>Slide<wbr>Button<wbr>Size</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-						<li class="tsd-signature tsd-kind-icon">update<wbr>Slide<wbr>Button<wbr>Size<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="updateparts" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> update<wbr>Parts</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Parts<span class="tsd-signature-symbol">(</span>mousePos<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/db3b133/src/ScrollBarView.ts#L132">ScrollBarView.ts:132</a></li>
+									<li>Defined in <a href="https://github.com/MasatoMakino/createjs-basic-scrollbar/blob/75a09fc/src/SliderView.ts#L133">src/SliderView.ts:133</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>スライダーボタンのサイズの伸縮を行う。</p>
+									<p>各MCの位置、サイズをマウスポインタの位置に合わせて更新する
+									moveSliderの内部処理</p>
 								</div>
 							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>mousePos: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -3567,390 +3524,375 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="../modules/_scrollbarview_.html">"<wbr>Scroll<wbr>Bar<wbr>View"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_sliderevent_.html">"<wbr>Slider<wbr>Event"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_sliderview_.html">"<wbr>Slider<wbr>View"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_sliderviewoption_.html">"<wbr>Slider<wbr>View<wbr>Option"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_index_.html">"index"</a>
-					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="../enums/slidereventtype.html" class="tsd-kind-icon">Slider<wbr>Event<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="scrollbarview.html" class="tsd-kind-icon">Scroll<wbr>Bar<wbr>View</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="scrollbarviewinitoption.html" class="tsd-kind-icon">Scroll<wbr>Bar<wbr>View<wbr>Init<wbr>Option</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="sliderevent.html" class="tsd-kind-icon">Slider<wbr>Event</a>
+					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_scrollbarview_.scrollbarview.html" class="tsd-kind-icon">Scroll<wbr>Bar<wbr>View</a>
+					<li class="current tsd-kind-class">
+						<a href="sliderview.html" class="tsd-kind-icon">Slider<wbr>View</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-								<a href="_scrollbarview_.scrollbarview.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#_bar" class="tsd-kind-icon">_bar</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#_barmask" class="tsd-kind-icon">_bar<wbr>Mask</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#_base" class="tsd-kind-icon">_base</a>
+								<a href="sliderview.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#_contentsmask" class="tsd-kind-icon">_contents<wbr>Mask</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#_maxposition" class="tsd-kind-icon">_max<wbr>Position</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#_minposition" class="tsd-kind-icon">_min<wbr>Position</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#_slidebutton" class="tsd-kind-icon">_slide<wbr>Button</a>
+								<a href="sliderview.html#_bar" class="tsd-kind-icon">_bar</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#_targetcontents" class="tsd-kind-icon">_target<wbr>Contents</a>
+								<a href="sliderview.html#_barmask" class="tsd-kind-icon">_bar<wbr>Mask</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="sliderview.html#_base" class="tsd-kind-icon">_base</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="sliderview.html#_maxposition" class="tsd-kind-icon">_max<wbr>Position</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="sliderview.html#_minposition" class="tsd-kind-icon">_min<wbr>Position</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="sliderview.html#_rate" class="tsd-kind-icon">_rate</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="sliderview.html#_slidebutton" class="tsd-kind-icon">_slide<wbr>Button</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#alpha" class="tsd-kind-icon">alpha</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_scrollbarview_.scrollbarview.html#autohide" class="tsd-kind-icon">auto<wbr>Hide</a>
+								<a href="sliderview.html#alpha" class="tsd-kind-icon">alpha</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#bitmapcache" class="tsd-kind-icon">bitmap<wbr>Cache</a>
+								<a href="sliderview.html#bitmapcache" class="tsd-kind-icon">bitmap<wbr>Cache</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#cachecanvas" class="tsd-kind-icon">cache<wbr>Canvas</a>
+								<a href="sliderview.html#cachecanvas" class="tsd-kind-icon">cache<wbr>Canvas</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#cacheid" class="tsd-kind-icon">cacheID</a>
+								<a href="sliderview.html#cacheid" class="tsd-kind-icon">cacheID</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#children" class="tsd-kind-icon">children</a>
+								<a href="sliderview.html#children" class="tsd-kind-icon">children</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#compositeoperation" class="tsd-kind-icon">composite<wbr>Operation</a>
+								<a href="sliderview.html#compositeoperation" class="tsd-kind-icon">composite<wbr>Operation</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#cursor" class="tsd-kind-icon">cursor</a>
+								<a href="sliderview.html#cursor" class="tsd-kind-icon">cursor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#dragstartpos" class="tsd-kind-icon">drag<wbr>Start<wbr>Pos</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#filters" class="tsd-kind-icon">filters</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="sliderview.html#dragstartpos" class="tsd-kind-icon">drag<wbr>Start<wbr>Pos</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#hitarea" class="tsd-kind-icon">hit<wbr>Area</a>
+								<a href="sliderview.html#filters" class="tsd-kind-icon">filters</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#id" class="tsd-kind-icon">id</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#ishorizontal" class="tsd-kind-icon">is<wbr>Horizontal</a>
+								<a href="sliderview.html#hitarea" class="tsd-kind-icon">hit<wbr>Area</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#mask" class="tsd-kind-icon">mask</a>
+								<a href="sliderview.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="sliderview.html#isdragging" class="tsd-kind-icon">is<wbr>Dragging</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+								<a href="sliderview.html#ishorizontal" class="tsd-kind-icon">is<wbr>Horizontal</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#mousechildren" class="tsd-kind-icon">mouse<wbr>Children</a>
+								<a href="sliderview.html#mask" class="tsd-kind-icon">mask</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#mouseenabled" class="tsd-kind-icon">mouse<wbr>Enabled</a>
+								<a href="sliderview.html#mousechildren" class="tsd-kind-icon">mouse<wbr>Children</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#name" class="tsd-kind-icon">name</a>
+								<a href="sliderview.html#mouseenabled" class="tsd-kind-icon">mouse<wbr>Enabled</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#numchildren" class="tsd-kind-icon">num<wbr>Children</a>
+								<a href="sliderview.html#name" class="tsd-kind-icon">name</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#parent" class="tsd-kind-icon">parent</a>
+								<a href="sliderview.html#numchildren" class="tsd-kind-icon">num<wbr>Children</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#regx" class="tsd-kind-icon">regX</a>
+								<a href="sliderview.html#parent" class="tsd-kind-icon">parent</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#regy" class="tsd-kind-icon">regY</a>
+								<a href="sliderview.html#regx" class="tsd-kind-icon">regX</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#rotation" class="tsd-kind-icon">rotation</a>
+								<a href="sliderview.html#regy" class="tsd-kind-icon">regY</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#scalex" class="tsd-kind-icon">scaleX</a>
+								<a href="sliderview.html#rotation" class="tsd-kind-icon">rotation</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#scaley" class="tsd-kind-icon">scaleY</a>
+								<a href="sliderview.html#scalex" class="tsd-kind-icon">scaleX</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#shadow" class="tsd-kind-icon">shadow</a>
+								<a href="sliderview.html#scaley" class="tsd-kind-icon">scaleY</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#skewx" class="tsd-kind-icon">skewX</a>
+								<a href="sliderview.html#shadow" class="tsd-kind-icon">shadow</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#skewy" class="tsd-kind-icon">skewY</a>
+								<a href="sliderview.html#skewx" class="tsd-kind-icon">skewX</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#snaptopixel" class="tsd-kind-icon">snap<wbr>ToPixel</a>
+								<a href="sliderview.html#skewy" class="tsd-kind-icon">skewY</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#stage" class="tsd-kind-icon">stage</a>
+								<a href="sliderview.html#snaptopixel" class="tsd-kind-icon">snap<wbr>ToPixel</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#tickchildren" class="tsd-kind-icon">tick<wbr>Children</a>
+								<a href="sliderview.html#stage" class="tsd-kind-icon">stage</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#tickenabled" class="tsd-kind-icon">tick<wbr>Enabled</a>
+								<a href="sliderview.html#tickchildren" class="tsd-kind-icon">tick<wbr>Children</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#transformmatrix" class="tsd-kind-icon">transform<wbr>Matrix</a>
+								<a href="sliderview.html#tickenabled" class="tsd-kind-icon">tick<wbr>Enabled</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#visible" class="tsd-kind-icon">visible</a>
+								<a href="sliderview.html#transformmatrix" class="tsd-kind-icon">transform<wbr>Matrix</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#x" class="tsd-kind-icon">x</a>
+								<a href="sliderview.html#visible" class="tsd-kind-icon">visible</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#y" class="tsd-kind-icon">y</a>
+								<a href="sliderview.html#x" class="tsd-kind-icon">x</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#y" class="tsd-kind-icon">y</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+								<a href="sliderview.html#max_rate" class="tsd-kind-icon">MAX_<wbr>RATE</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
-								<a href="_scrollbarview_.scrollbarview.html#max_rate" class="tsd-kind-icon">MAX_<wbr>RATE</a>
+								<a href="sliderview.html#suppresscrossdomainerrors" class="tsd-kind-icon">suppress<wbr>Cross<wbr>Domain<wbr>Errors</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
-								<a href="_scrollbarview_.scrollbarview.html#suppresscrossdomainerrors" class="tsd-kind-icon">suppress<wbr>Cross<wbr>Domain<wbr>Errors</a>
-							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="_scrollbarview_.scrollbarview.html#contentsmask" class="tsd-kind-icon">contents<wbr>Mask</a>
-							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#ishide" class="tsd-kind-icon">is<wbr>Hide</a>
-							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#rate" class="tsd-kind-icon">rate</a>
+							<li class=" tsd-kind-set-signature tsd-parent-kind-class tsd-is-private">
+								<a href="sliderview.html#base" class="tsd-kind-icon">base</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="_scrollbarview_.scrollbarview.html#slidebuttonsize" class="tsd-kind-icon">slide<wbr>Button<wbr>Size</a>
+								<a href="sliderview.html#rate" class="tsd-kind-icon">rate</a>
 							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="_scrollbarview_.scrollbarview.html#targetcontents" class="tsd-kind-icon">target<wbr>Contents</a>
+							<li class=" tsd-kind-set-signature tsd-parent-kind-class tsd-is-private">
+								<a href="sliderview.html#slidebutton" class="tsd-kind-icon">slide<wbr>Button</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#addchild" class="tsd-kind-icon">add<wbr>Child</a>
+								<a href="sliderview.html#addchild" class="tsd-kind-icon">add<wbr>Child</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#addchildat" class="tsd-kind-icon">add<wbr>Child<wbr>At</a>
+								<a href="sliderview.html#addchildat" class="tsd-kind-icon">add<wbr>Child<wbr>At</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="sliderview.html#addchildme" class="tsd-kind-icon">add<wbr>Child<wbr>Me</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#addeventlistener" class="tsd-kind-icon">add<wbr>Event<wbr>Listener</a>
+								<a href="sliderview.html#addeventlistener" class="tsd-kind-icon">add<wbr>Event<wbr>Listener</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#cache" class="tsd-kind-icon">cache</a>
+								<a href="sliderview.html#cache" class="tsd-kind-icon">cache</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#changepixeltorate" class="tsd-kind-icon">change<wbr>Pixel<wbr>ToRate</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+								<a href="sliderview.html#changepixeltorate" class="tsd-kind-icon">change<wbr>Pixel<wbr>ToRate</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#changerate" class="tsd-kind-icon">change<wbr>Rate</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="sliderview.html#changerate" class="tsd-kind-icon">change<wbr>Rate</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#changeratetopixel" class="tsd-kind-icon">change<wbr>Rate<wbr>ToPixel</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+								<a href="sliderview.html#changeratetopixel" class="tsd-kind-icon">change<wbr>Rate<wbr>ToPixel</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#clone" class="tsd-kind-icon">clone</a>
+								<a href="sliderview.html#clone" class="tsd-kind-icon">clone</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#contains" class="tsd-kind-icon">contains</a>
+								<a href="sliderview.html#contains" class="tsd-kind-icon">contains</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#dispatchevent" class="tsd-kind-icon">dispatch<wbr>Event</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#dispose" class="tsd-kind-icon">dispose</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#draw" class="tsd-kind-icon">draw</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#getbounds" class="tsd-kind-icon">get<wbr>Bounds</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#getcachedataurl" class="tsd-kind-icon">get<wbr>Cache<wbr>DataURL</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#getchildat" class="tsd-kind-icon">get<wbr>Child<wbr>At</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#getchildbyname" class="tsd-kind-icon">get<wbr>Child<wbr>ByName</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#getchildindex" class="tsd-kind-icon">get<wbr>Child<wbr>Index</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#getconcatenateddisplayprops" class="tsd-kind-icon">get<wbr>Concatenated<wbr>Display<wbr>Props</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#getconcatenatedmatrix" class="tsd-kind-icon">get<wbr>Concatenated<wbr>Matrix</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#getmatrix" class="tsd-kind-icon">get<wbr>Matrix</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#getmouseposition" class="tsd-kind-icon">get<wbr>Mouse<wbr>Position</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#getnumchildren" class="tsd-kind-icon">get<wbr>Num<wbr>Children</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#getobjectunderpoint" class="tsd-kind-icon">get<wbr>Object<wbr>Under<wbr>Point</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#getobjectsunderpoint" class="tsd-kind-icon">get<wbr>Objects<wbr>Under<wbr>Point</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#getposition" class="tsd-kind-icon">get<wbr>Position</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#getsize" class="tsd-kind-icon">get<wbr>Size</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#getstage" class="tsd-kind-icon">get<wbr>Stage</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#gettransformedbounds" class="tsd-kind-icon">get<wbr>Transformed<wbr>Bounds</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#globaltolocal" class="tsd-kind-icon">global<wbr>ToLocal</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#haseventlistener" class="tsd-kind-icon">has<wbr>Event<wbr>Listener</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#hittest" class="tsd-kind-icon">hit<wbr>Test</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#init" class="tsd-kind-icon">init</a>
+								<a href="sliderview.html#dispatchevent" class="tsd-kind-icon">dispatch<wbr>Event</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_scrollbarview_.scrollbarview.html#initsliderbuttonsize" class="tsd-kind-icon">init<wbr>Slider<wbr>Button<wbr>Size</a>
+								<a href="sliderview.html#dispose" class="tsd-kind-icon">dispose</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#draw" class="tsd-kind-icon">draw</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#getbounds" class="tsd-kind-icon">get<wbr>Bounds</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#getcachedataurl" class="tsd-kind-icon">get<wbr>Cache<wbr>DataURL</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#getchildat" class="tsd-kind-icon">get<wbr>Child<wbr>At</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#getchildbyname" class="tsd-kind-icon">get<wbr>Child<wbr>ByName</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#getchildindex" class="tsd-kind-icon">get<wbr>Child<wbr>Index</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#getconcatenateddisplayprops" class="tsd-kind-icon">get<wbr>Concatenated<wbr>Display<wbr>Props</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#getconcatenatedmatrix" class="tsd-kind-icon">get<wbr>Concatenated<wbr>Matrix</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#getmatrix" class="tsd-kind-icon">get<wbr>Matrix</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#initsliderposition" class="tsd-kind-icon">init<wbr>Slider<wbr>Position</a>
+								<a href="sliderview.html#getmouseposition" class="tsd-kind-icon">get<wbr>Mouse<wbr>Position</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#isvisible" class="tsd-kind-icon">is<wbr>Visible</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#limitsliderbuttonposition" class="tsd-kind-icon">limit<wbr>Slider<wbr>Button<wbr>Position</a>
+								<a href="sliderview.html#getnumchildren" class="tsd-kind-icon">get<wbr>Num<wbr>Children</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#localtoglobal" class="tsd-kind-icon">local<wbr>ToGlobal</a>
+								<a href="sliderview.html#getobjectunderpoint" class="tsd-kind-icon">get<wbr>Object<wbr>Under<wbr>Point</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#localtolocal" class="tsd-kind-icon">local<wbr>ToLocal</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#off" class="tsd-kind-icon">off</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#on" class="tsd-kind-icon">on</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#ondisposefunction" class="tsd-kind-icon">on<wbr>Dispose<wbr>Function</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#onpressbase" class="tsd-kind-icon">on<wbr>Press<wbr>Base</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#removeallchildren" class="tsd-kind-icon">remove<wbr>All<wbr>Children</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#removealleventlisteners" class="tsd-kind-icon">remove<wbr>All<wbr>Event<wbr>Listeners</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#removechild" class="tsd-kind-icon">remove<wbr>Child</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#removechildat" class="tsd-kind-icon">remove<wbr>Child<wbr>At</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#removeeventlistener" class="tsd-kind-icon">remove<wbr>Event<wbr>Listener</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#set" class="tsd-kind-icon">set</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#setbounds" class="tsd-kind-icon">set<wbr>Bounds</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#setchildindex" class="tsd-kind-icon">set<wbr>Child<wbr>Index</a>
+								<a href="sliderview.html#getobjectsunderpoint" class="tsd-kind-icon">get<wbr>Objects<wbr>Under<wbr>Point</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#setcontentsmask" class="tsd-kind-icon">set<wbr>Contents<wbr>Mask</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#setposition" class="tsd-kind-icon">set<wbr>Position</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#setsize" class="tsd-kind-icon">set<wbr>Size</a>
+								<a href="sliderview.html#getposition" class="tsd-kind-icon">get<wbr>Position</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#settargetcontents" class="tsd-kind-icon">set<wbr>Target<wbr>Contents</a>
+								<a href="sliderview.html#getsize" class="tsd-kind-icon">get<wbr>Size</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#settransform" class="tsd-kind-icon">set<wbr>Transform</a>
+								<a href="sliderview.html#getstage" class="tsd-kind-icon">get<wbr>Stage</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#sortchildren" class="tsd-kind-icon">sort<wbr>Children</a>
+								<a href="sliderview.html#gettransformedbounds" class="tsd-kind-icon">get<wbr>Transformed<wbr>Bounds</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#swapchildren" class="tsd-kind-icon">swap<wbr>Children</a>
+								<a href="sliderview.html#globaltolocal" class="tsd-kind-icon">global<wbr>ToLocal</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#swapchildrenat" class="tsd-kind-icon">swap<wbr>Children<wbr>At</a>
+								<a href="sliderview.html#haseventlistener" class="tsd-kind-icon">has<wbr>Event<wbr>Listener</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#uncache" class="tsd-kind-icon">uncache</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#updatecache" class="tsd-kind-icon">update<wbr>Cache</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_scrollbarview_.scrollbarview.html#updatecontentsposition" class="tsd-kind-icon">update<wbr>Contents<wbr>Position</a>
+								<a href="sliderview.html#hittest" class="tsd-kind-icon">hit<wbr>Test</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#updatecontentspositionwithrate" class="tsd-kind-icon">update<wbr>Contents<wbr>Position<wbr>With<wbr>Rate</a>
+								<a href="sliderview.html#init" class="tsd-kind-icon">init</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="sliderview.html#initbarandmask" class="tsd-kind-icon">init<wbr>Bar<wbr>And<wbr>Mask</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#updatecontext" class="tsd-kind-icon">update<wbr>Context</a>
+								<a href="sliderview.html#isvisible" class="tsd-kind-icon">is<wbr>Visible</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-								<a href="_scrollbarview_.scrollbarview.html#updateslidebuttonsize" class="tsd-kind-icon">update<wbr>Slide<wbr>Button<wbr>Size</a>
+								<a href="sliderview.html#limitsliderbuttonposition" class="tsd-kind-icon">limit<wbr>Slider<wbr>Button<wbr>Position</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_scrollbarview_.scrollbarview.html#willtrigger" class="tsd-kind-icon">will<wbr>Trigger</a>
+								<a href="sliderview.html#localtoglobal" class="tsd-kind-icon">local<wbr>ToGlobal</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#localtolocal" class="tsd-kind-icon">local<wbr>ToLocal</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="sliderview.html#moveslider" class="tsd-kind-icon">move<wbr>Slider</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="sliderview.html#movesliderfinish" class="tsd-kind-icon">move<wbr>Slider<wbr>Finish</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#off" class="tsd-kind-icon">off</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#on" class="tsd-kind-icon">on</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+								<a href="sliderview.html#ondisposefunction" class="tsd-kind-icon">on<wbr>Dispose<wbr>Function</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+								<a href="sliderview.html#onpressbase" class="tsd-kind-icon">on<wbr>Press<wbr>Base</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#removeallchildren" class="tsd-kind-icon">remove<wbr>All<wbr>Children</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#removealleventlisteners" class="tsd-kind-icon">remove<wbr>All<wbr>Event<wbr>Listeners</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#removechild" class="tsd-kind-icon">remove<wbr>Child</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#removechildat" class="tsd-kind-icon">remove<wbr>Child<wbr>At</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#removeeventlistener" class="tsd-kind-icon">remove<wbr>Event<wbr>Listener</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#set" class="tsd-kind-icon">set</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#setbounds" class="tsd-kind-icon">set<wbr>Bounds</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#setchildindex" class="tsd-kind-icon">set<wbr>Child<wbr>Index</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+								<a href="sliderview.html#setposition" class="tsd-kind-icon">set<wbr>Position</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+								<a href="sliderview.html#setsize" class="tsd-kind-icon">set<wbr>Size</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#settransform" class="tsd-kind-icon">set<wbr>Transform</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#sortchildren" class="tsd-kind-icon">sort<wbr>Children</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="sliderview.html#startmove" class="tsd-kind-icon">start<wbr>Move</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#swapchildren" class="tsd-kind-icon">swap<wbr>Children</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#swapchildrenat" class="tsd-kind-icon">swap<wbr>Children<wbr>At</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#uncache" class="tsd-kind-icon">uncache</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#updatecache" class="tsd-kind-icon">update<wbr>Cache</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#updatecontext" class="tsd-kind-icon">update<wbr>Context</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="sliderview.html#updateparts" class="tsd-kind-icon">update<wbr>Parts</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="sliderview.html#willtrigger" class="tsd-kind-icon">will<wbr>Trigger</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
-								<a href="_scrollbarview_.scrollbarview.html#initialize" class="tsd-kind-icon">initialize</a>
+								<a href="sliderview.html#initialize" class="tsd-kind-icon">initialize</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_scrollbarview_.scrollbarviewinitoption.html" class="tsd-kind-icon">Scroll<wbr>Bar<wbr>View<wbr>Init<wbr>Option</a>
+					<li class=" tsd-kind-class">
+						<a href="sliderviewoption.html" class="tsd-kind-icon">Slider<wbr>View<wbr>Option</a>
 					</li>
 				</ul>
 			</nav>
@@ -3969,6 +3911,7 @@
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -4017,7 +3960,7 @@
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
