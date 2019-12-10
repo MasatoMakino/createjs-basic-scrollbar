@@ -45,7 +45,7 @@ stage.addChild(slider);
 
 [API documents](https://masatomakino.github.io/createjs-basic-scrollbar/api/)
 
-see also [demo script](https://masatomakino.github.io/createjs-basic-scrollbar/demo/main.js).
+see also [demo script](demoSrc/demo.js).
 
 ## License
 
