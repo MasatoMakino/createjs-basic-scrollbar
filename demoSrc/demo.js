@@ -21,6 +21,7 @@ const onDomContentsLoaded = () => {
   //stageの初期化
   const canvas = document.getElementById("appCanvas");
   const stage = new createjs.Stage(canvas);
+  createjs.Ticker.timingMode = createjs.Ticker.RAF;
   createjs.Ticker.on("tick", updateStage);
 
   initSlider(stage);
@@ -31,11 +32,7 @@ const getSliderBase = (w, h, color) => {
   const shape = new createjs.Shape();
   const g = shape.graphics;
   g.beginFill(color);
-  g.moveTo(0, 0)
-    .lineTo(w, 0)
-    .lineTo(w, h)
-    .lineTo(0, 0)
-    .endFill();
+  g.moveTo(0, 0).lineTo(w, 0).lineTo(w, h).lineTo(0, 0).endFill();
 
   shape.setBounds(0, 0, w, h);
   return shape;
@@ -63,7 +60,7 @@ const getSliderButton = (w, h, color) => {
  * スライダーの実装サンプル
  * @param stage
  */
-const initSlider = stage => {
+const initSlider = (stage) => {
   const SLIDER_W = 200;
   const SLIDER_H = 64;
 
@@ -74,10 +71,10 @@ const initSlider = stage => {
     mask: getSliderMask(SLIDER_W, SLIDER_H),
     minPosition: 0,
     maxPosition: SLIDER_W,
-    rate: 25.0
+    rate: 25.0,
   });
 
-  slider.addEventListener(SliderEventType.CHANGE, e => {
+  slider.addEventListener(SliderEventType.CHANGE, (e) => {
     console.log(e.rate);
   });
   stage.addChild(slider);
@@ -127,7 +124,7 @@ const getScrollBarOption = (contentsW, scrollBarH, container) => {
       contentsW,
       scrollBarH,
       container
-    )
+    ),
   };
 };
 
@@ -135,7 +132,7 @@ const getScrollBarOption = (contentsW, scrollBarH, container) => {
  * スクロールバーの実装サンプル
  * @param stage
  */
-const initScrollBar = stage => {
+const initScrollBar = (stage) => {
   const SCROLLBAR_W = 16;
   const SCROLLBAR_H = 360;
   const SCROLLBAR_Y = 120;
@@ -153,7 +150,7 @@ const initScrollBar = stage => {
       minPosition: 0,
       maxPosition: SCROLLBAR_H,
       rate: 30.0,
-      isHorizontal: false
+      isHorizontal: false,
     },
     getScrollBarOption(CONTENTS_W, SCROLLBAR_H, container)
   );
