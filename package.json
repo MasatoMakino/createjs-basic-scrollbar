@@ -2,8 +2,13 @@
   "name": "createjs-basic-scrollbar",
   "version": "0.3.7",
   "description": "Scrollbar library for CreateJS.",
-  "main": "./bin/index.js",
-  "types": "./bin/index.d.ts",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "module": "./esm/index.js",
+  "files": [
+    "lib",
+    "esm"
+  ],
   "repository": "https://MasatoMakino@github.com/MasatoMakino/createjs-basic-scrollbar.git",
   "author": "MasatoMakino <unagiinu.g@gmail.com>",
   "license": "MIT",
@@ -13,7 +18,7 @@
   "dependencies": {},
   "devDependencies": {
     "@types/easeljs": "^1.0.0",
-    "@types/jest": "^26.0.4",
+    "@types/jest": "^26.0.5",
     "gulp": "^4.0.2",
     "gulptask-demo-page": "https://github.com/MasatoMakino/gulptask-demo-page.git",
     "gulptask-dev-server": "https://github.com/MasatoMakino/gulptask-dev-server.git",
