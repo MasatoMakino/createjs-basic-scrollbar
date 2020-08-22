@@ -5,6 +5,8 @@ Scrollbar library for CreateJS.
 [![Maintainability](https://api.codeclimate.com/v1/badges/cad7f4840c95696dd163/maintainability)](https://codeclimate.com/github/MasatoMakino/createjs-basic-scrollbar/maintainability)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=MasatoMakino&repo=createjs-basic-scrollbar&show_owner=true)](https://github.com/MasatoMakino/createjs-basic-scrollbar)
+
 ## Demo
 
 [Demo Page](https://masatomakino.github.io/createjs-basic-scrollbar/demo/)
@@ -38,7 +40,7 @@ const slider = new SliderView({
   base: new createjs.Bitmap("base.jpg"),
   button: new createjs.Bitmap("button.jpg"),
   minPosition: 0,
-  maxPosition: 240
+  maxPosition: 240,
 });
 stage.addChild(slider);
 ```
