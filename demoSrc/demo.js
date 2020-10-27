@@ -1,19 +1,9 @@
 import { SliderEventType, ScrollBarView, SliderView } from "../";
 
 const onDomContentsLoaded = () => {
-  //FPSメーターの生成と配置
-  const stats = new Stats();
-  stats.showPanel(0);
-  stats.domElement.style.cssText =
-    "position:absolute; z-index:999; top:0; left:0;";
-
-  document.body.appendChild(stats.domElement);
-
   //ステージ更新処理
   const updateStage = () => {
-    stats.begin();
     stage.update();
-    stats.end();
   };
 
   //stageの初期化
